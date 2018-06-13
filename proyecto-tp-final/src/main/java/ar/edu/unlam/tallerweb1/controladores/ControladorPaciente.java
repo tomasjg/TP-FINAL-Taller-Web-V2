@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
@@ -11,6 +14,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import ar.edu.unlam.tallerweb1.modelo.Formula;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Plan;
 
 
 @Controller
@@ -42,6 +46,20 @@ public class ControladorPaciente {
 		model.put("pesoIdeal",pesoIdeal);
 		model.put("tmb",tmb);
 		model.put("paciente", paciente);
+		
+		List<Plan> planes = new ArrayList<Plan>();
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",2000));
+		
+		model.put("planes", planes);
+		
+		Plan plan = new Plan();
+		model.put("plan", plan);
 		
 		return new ModelAndView("planes", model);
 	}

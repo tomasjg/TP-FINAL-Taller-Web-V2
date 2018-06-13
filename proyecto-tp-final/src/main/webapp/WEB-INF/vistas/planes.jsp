@@ -11,7 +11,9 @@
 	<body>
 		<div class = "container">
 			<span>imc = ${imc}</span>
+			<br>
 			<span>Peso Ideal = ${pesoIdeal}</span>
+			<br>
 			<span>tmb = ${tmb}</span>
 			<br>
 			<span>altura = ${paciente.altura}</span>
@@ -23,7 +25,19 @@
 			<span>sexo = ${paciente.sexo}</span>
 			<br>
 			<span>ejercicio = ${paciente.ejercicio}</span>
-			
+			<br>
+			<form:form action="planes" method="POST" modelAttribute="plan">
+				Seleccione Plan:
+				<form:select path="calorias">
+					<c:forEach items="${planes}" var="lista_planes">		
+							<c:if test="${lista_planes.calorias < tmb}">
+							<form:option value="${lista_planes.calorias}">${lista_planes.nombre} - ${lista_planes.calorias} Calorias Diarias</form:option>
+							</c:if>
+					</c:forEach>
+				</form:select>
+				<br>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Siguiente</button>
+			</form:form>
 		</div>
 		
 		<!-- Placed at the end of the document so the pages load faster -->
