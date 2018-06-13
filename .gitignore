@@ -4,3 +4,4 @@
 /target/
 proyecto-tp-final/target/
 proyecto-tp-final/target/classes/META-INF/MANIFEST.MF
+proyecto-tp-final/src/main/resources/hibernateContext.xml

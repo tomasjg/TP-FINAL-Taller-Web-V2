@@ -63,10 +63,10 @@ public class ControladorLogin {
 	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	/*@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
 		return new ModelAndView("redirect:/login");
-	}
+	}*/
 	
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/registrarUsuario si la misma es invocada por metodo http GET
 	@RequestMapping(path ="/registrarusuario", method = RequestMethod.GET)
