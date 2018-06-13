@@ -2,3 +2,5 @@
 *.xml
 
 /target/
+proyecto-tp-final/target/
+proyecto-tp-final/target/classes/META-INF/MANIFEST.MF
