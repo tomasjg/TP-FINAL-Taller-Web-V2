@@ -15,13 +15,13 @@
 				
 				<form:form action="planes" method="POST" modelAttribute="paciente">
 				<form:label path="altura">Altura</form:label>
-				<form:input path="altura" id="altura" type="text" class="form-control" />
+				<form:input path="altura" id="altura" type="number" class="form-control" required="required" placeholder="Exprese su altura en centimetros "/>
 				<br>
 				<form:label path="peso">Peso</form:label>
-				<form:input path="peso" id="peso" type="text" class="form-control"/> 
+				<form:input path="peso" id="peso" type="number" class="form-control" required="required" placeholder="Exprese su peso en kilogramos" /> 
 				<br>    		  
 				<form:label path="sexo">Sexo</form:label> 
-				<form:radiobutton path="sexo" value="Hombre"/> Hombre
+				<form:radiobutton path="sexo" value="Hombre" checked="checked"/> Hombre
 				<form:radiobutton path="sexo" value="Mujer"/> Mujer
 				<br><br>				
 				<form:label path="edad">Edad</form:label> 
@@ -30,7 +30,7 @@
 				<form:label path="ejercicio">Ejercicio</form:label>
 				<br> 
 				Poco o Ningun Ejercicio
-				<form:radiobutton path="ejercicio" value="1"/>
+				<form:radiobutton path="ejercicio" value="1" checked="checked"/>
 				<br>
 				Ejercicio Ligero (1-3 dias a la semana)
 				<form:radiobutton path="ejercicio" value="2"/>
@@ -43,6 +43,7 @@
 				<br> 
 				Ejercicio Extremo (2 veces al dia; todos los dias de la semana)
 				<form:radiobutton path="ejercicio" value="5"/>
+				<br>
 				<br>
 			<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Siguiente</button>
 			</form:form>
