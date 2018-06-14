@@ -49,14 +49,15 @@ public class ControladorPaciente {
 		
 		List<Plan> planes = new ArrayList<Plan>();
 		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",1900));
-		planes.add(new Plan("Plan Vegetariano",1800));
-		planes.add(new Plan("Plan Vegetariano",1700));
-		planes.add(new Plan("Plan Vegetariano",1600));
-		planes.add(new Plan("Plan Vegetariano",1500));
-		planes.add(new Plan("Plan Vegetariano",1400));
-		planes.add(new Plan("Plan Vegetariano",1300));
-		planes.add(new Plan("Plan Vegetariano",1200));
+		planes.add(new Plan("Plan Intolerantes lactosa",1900));
+		planes.add(new Plan("Plan Alergicos al huevo",1800));
+		planes.add(new Plan("Plan Bajo en Grasas, Azucares",1700));
+		planes.add(new Plan("Plan Bajo en sodio",1600));
+		planes.add(new Plan("Plan Libre de Glutem",1500));
+		planes.add(new Plan("Plan Rico en calcio",1400));
+		planes.add(new Plan("Plan Ovo-Vegetariano",1300));
+		planes.add(new Plan("Plan Lacto-Vegetariano",1200));
+		planes.add(new Plan("Plan Ovo-Lacto-Vegetariano",1200));
 		
 		model.put("planes", planes);
 		
