@@ -49,19 +49,49 @@ public class ControladorPaciente {
 		
 		List<Plan> planes = new ArrayList<Plan>();
 		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
-		planes.add(new Plan("Plan Vegetariano",2000));
+		planes.add(new Plan("Plan Vegetariano",1900));
+		planes.add(new Plan("Plan Vegetariano",1800));
+		planes.add(new Plan("Plan Vegetariano",1700));
+		planes.add(new Plan("Plan Vegetariano",1600));
+		planes.add(new Plan("Plan Vegetariano",1500));
+		planes.add(new Plan("Plan Vegetariano",1400));
+		planes.add(new Plan("Plan Vegetariano",1300));
+		planes.add(new Plan("Plan Vegetariano",1200));
 		
 		model.put("planes", planes);
 		
 		Plan plan = new Plan();
 		model.put("plan", plan);
 		
+		/*String prueba = request.getParameter("prueba");
+		model.put("prueba", prueba);*/
+		
 		return new ModelAndView("planes", model);
 	}
 
+	@RequestMapping(path = "/final", method = RequestMethod.POST)
+	public ModelAndView crearGraficoCalorias(@ModelAttribute("plan") Plan plan, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		model.put("plan", plan);
+		
+		Double peso = Double.parseDouble(request.getParameter("peso"));
+		Double tmb = Double.parseDouble(request.getParameter("tmb"));
+		Double pesoIdeal = Double.parseDouble(request.getParameter("pesoIdeal"));
+		Double pesoAPerder;
+		Double caloriasPerdidasPorDia;
+		int diasObjetivo;
+		
+		pesoAPerder = peso - pesoIdeal;
+		caloriasPerdidasPorDia = tmb - plan.getCalorias();
+		diasObjetivo = (int)(((pesoAPerder * 1000) * 7) / caloriasPerdidasPorDia);
+		
+		model.put("peso", peso);
+		model.put("tmb", tmb);
+		model.put("pesoIdeal", pesoIdeal);
+		model.put("pesoAPerder", pesoAPerder);
+		model.put("caloriasPerdidasPorDia", caloriasPerdidasPorDia);
+		model.put("diasObjetivo", diasObjetivo);
+		
+		return new ModelAndView("final", model);
+	}
 }

@@ -8,7 +8,22 @@
 	</head>
 	<body>
 		<div class = "container">
-			<h1>LLEGO AL FINAL</h1>
+			<span>Peso inicial: ${peso}</span>
+			<br>
+			<span>Peso Objetivo: ${pesoIdeal}</span>
+			<br>
+			<span>Peso a Perder: ${pesoAPerder}</span>
+			<br>
+			<span>Calorias Diarias: ${plan.calorias}</span>
+			<br>
+			<span>Calorias Perdidas por Dia: ${caloriasPerdidasPorDia}</span>
+			<br>
+			<span>Dias Totales: ${diasObjetivo} Dias</span>
+			<br>
+			<span></span>
+			<br>
+			<span></span>
+			<br>
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>

@@ -26,7 +26,10 @@
 			<br>
 			<span>ejercicio = ${paciente.ejercicio}</span>
 			<br>
-			<form:form action="planes" method="POST" modelAttribute="plan">
+				<form:form action="final" method="POST" modelAttribute="plan">
+				<input type="hidden" name="tmb" value="${tmb}"/>
+				<input type="hidden" name="peso" value="${paciente.peso}"/>
+				<input type="hidden" name="pesoIdeal" value="${pesoIdeal}"/>
 				Seleccione Plan:
 				<form:select path="calorias">
 					<c:forEach items="${planes}" var="lista_planes">		
