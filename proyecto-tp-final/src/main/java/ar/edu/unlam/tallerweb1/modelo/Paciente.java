@@ -11,12 +11,33 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private String nombre;
 	private Double peso;
 	private Double altura;
 	private String sexo;
 	private int edad;
 	private int ejercicio;
+		
+	public Paciente() {
+	}
 	
+	public Paciente(Double peso, Double altura) {
+		this.peso = peso;
+		this.altura = altura;
+	}
+	
+	public Long getId() {
+		return id;
+	}
+	public void setId(Long id) {
+		this.id = id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
 	public Double getPeso() {
 		return peso;
 	}
