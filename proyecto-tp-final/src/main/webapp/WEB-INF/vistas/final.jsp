@@ -1,3 +1,5 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,21 +10,36 @@
 	</head>
 	<body>
 		<div class = "container">
-			<span>Peso inicial: ${peso}</span>
 			<br>
-			<span>Peso Objetivo: ${pesoIdeal}</span>
+			-----
 			<br>
-			<span>Peso a Perder: ${pesoAPerder}</span>
+			 Plan escogido: <br>
+			<span>ID: ${pacienteDTO.plan.id}</span>
 			<br>
-			<span>Calorias Diarias: ${plan.calorias}</span>
+			<span>Nombre: ${pacienteDTO.plan.nombre}</span>
 			<br>
-			<span>Calorias Perdidas por Dia: ${caloriasPerdidasPorDia}</span>
+			<span>Calorías diarias: ${pacienteDTO.plan.caloriasDiarias}</span>
 			<br>
-			<span>Dias Totales: ${diasObjetivo} Dias</span>
+			<span>Intensidad: ${pacienteDTO.plan.intensidad}</span>
 			<br>
-			<span></span>
+			<span>Listado de comidas: ${pacienteDTO.plan.listaComidasPorDia}</span>
 			<br>
-			<span></span>
+			<br>
+			-----
+			<br>
+			<span>Peso: ${peso}</span>
+			<br>
+			<span>TMB: ${tmb}</span>
+			<br>
+			<span>Peso ideal: ${pesoIdeal}</span>
+			<br>
+			<span>Peso a perder: ${pesoAPerder}</span>
+			<br>
+			<span>Calorías perdidas por día: ${caloriasPerdidasPorDia}</span>
+			<br>
+			<span>Días objetivo: ${diasObjetivo}</span>
+			<br>
+			-----
 			<br>
 		</div>
 		<!-- Placed at the end of the document so the pages load faster -->
