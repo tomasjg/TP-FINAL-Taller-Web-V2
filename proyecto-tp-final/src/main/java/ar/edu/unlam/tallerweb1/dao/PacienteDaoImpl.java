@@ -14,11 +14,10 @@ public class PacienteDaoImpl implements PacienteDao{
 	
 	@Inject
     private SessionFactory sessionFactory;
-
+	final Session session = sessionFactory.getCurrentSession();
+	
 	@Override
 	public Paciente getPacienteById (Long id) {
-		
-		final Session session = sessionFactory.getCurrentSession();
 		
 			Paciente resultado = 
 			(Paciente) session.createCriteria(Paciente.class)
@@ -31,10 +30,20 @@ public class PacienteDaoImpl implements PacienteDao{
 	@Override
 	public Long savePacienteInBd (Paciente paciente) {
 		
-		final Session session = sessionFactory.getCurrentSession();
 		session.save(paciente);
 		
 		return paciente.getId();
+	}
+	
+	@Override
+	public Double getPesoPaciente(Long id){
+		
+		Paciente paciente=
+		(Paciente) session.createCriteria(Paciente.class)
+		.add(Restrictions.eq("id", id))
+		.uniqueResult();
+		
+		return paciente.getPeso();	
 	}
 	
 }
