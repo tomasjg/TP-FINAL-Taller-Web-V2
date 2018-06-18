@@ -7,9 +7,27 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet" >
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/estilos.css">
 	</head>
 	<body>
-		<div class = "container">
+		
+		<header class="header container">
+			<h1 class="logo">Control Nutricional</h1>
+            <nav>
+                 <ul class="">
+                    <li><a href="#">PACIENTE</a></li>
+                    <li><a href="#">EXCLUCIONES</a></li>
+                    <li><a class="btn active white" href="#">PLANES</a></li>
+                    <li><a href="#">TU PLAN</a></li>
+                </ul>
+            </nav>
+		</header>
+		
+		<div class = "main container">
+		
+		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			
+			<h3>Estos son los planes sugeridos: </h3>
 			
 			<c:if test="${pacienteDTO.excluirCarne}" >
 				<span>Sin carnes</span>
@@ -26,7 +44,7 @@
 			<span></span>
 			<br>
 			<br>
-			<span>Estos son los planes sugeridos: </span>
+			
 			<br>
 			<form:form action="final" method="POST" modelAttribute="pacienteDTO">
 				<c:forEach items="${planesSugeridos}" var = "item" >
@@ -40,8 +58,14 @@
 				<form:input type="hidden" path="paciente.edad" value="${paciente.edad}"/>
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 				
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Siguiente</button>
+				<br>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Siguiente</button>
 	  	    </form:form>
+	  	    
+	  	    </div>
+	  	   </div>
+		
+		<jsp:include page="footer.jsp"></jsp:include>
 		
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>

@@ -7,13 +7,28 @@
 	    <link href="css/bootstrap.min.css" rel="stylesheet" >
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
+	    <link rel="stylesheet" href="css/estilos.css">
 	</head>
 	<body>
-		<div class = "container">
-			<br>
-			-----
-			<br>
-			 Plan escogido: <br>
+		
+		<header class="header container">
+			<h1 class="logo">Control Nutricional</h1>
+            <nav>
+                 <ul class="">
+                    <li><a href="#">PACIENTE</a></li>
+                    <li><a href="#">EXCLUCIONES</a></li>
+                    <li><a href="#">PLANES</a></li>
+                    <li><a class="btn active white" href="#">TU PLAN</a></li>
+                </ul>
+            </nav>
+		</header>
+		
+		<div class = "main container">
+				
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			
+			<h3>Plan escogido: </h3>
+			
 			<span>ID: ${pacienteDTO.plan.id}</span>
 			<br>
 			<span>Nombre: ${pacienteDTO.plan.nombre}</span>
@@ -41,7 +56,12 @@
 			<br>
 			-----
 			<br>
-		</div>
+			</div>
+		
+			</div>
+		
+			<jsp:include page="footer.jsp"></jsp:include>
+		
 		<!-- Placed at the end of the document so the pages load faster -->
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js" ></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
