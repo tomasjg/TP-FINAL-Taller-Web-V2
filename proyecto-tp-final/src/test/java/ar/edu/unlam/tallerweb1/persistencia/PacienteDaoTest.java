@@ -50,13 +50,12 @@ public class PacienteDaoTest extends SpringTest{
 		
 		Paciente paciente = new Paciente(80d, 170d);
 		paciente.setNombre("Tomas");
-		paciente.setPeso(78d);
 		
-		pacienteDao.savePacienteInBd(paciente);
+		Long id=pacienteDao.savePacienteInBd(paciente);
 		
-		Double peso=pacienteDao.getPesoPaciente(paciente.getId());
+		Double peso=pacienteDao.getPesoPaciente(id);
 		
-		assertEquals(peso,"78d");
+		assertThat(peso).isEqualTo(80);
 		
 	}
 	
