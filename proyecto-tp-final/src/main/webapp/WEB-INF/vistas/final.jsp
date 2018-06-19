@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/fmt" prefix = "fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -8,6 +9,7 @@
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	    <link rel="stylesheet" href="css/estilos.css">
+	    <script src="<c:url value="js/Chart.min.js" />"></script>
 	</head>
 	<body>
 		
@@ -55,6 +57,27 @@
 			<span>Días objetivo: ${diasObjetivo}</span>
 			<br>
 			-----
+			<c:set var="pesoPerdidoPorMes" value="${(caloriasPerdidasPorDia*4)/1000}" />
+			<c:set var="contador" value="${peso}" />  
+			<div class="chartjs-wrapper">
+					<canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
+					<script>new Chart(document.getElementById("chartjs-0"),{"type":"line","data":
+					{"labels":["",<c:forEach var = "i" begin = "0" end = "${diasObjetivo / 30}">
+		        					 "Mes ${i + 1}",
+				      				</c:forEach>],
+				      		"datasets":
+						[{"label":"Peso","data":[
+							<c:set var="pesoPerdidoPorMes" value="${(caloriasPerdidasPorDia*4)/1000}" />
+								<c:set var="contador" value="${peso}" />   
+								<c:forEach var = "i" begin = "0" end = "${(diasObjetivo / 30)+1}">	        	 
+								${contador}, 
+								  	 <c:set var="contador" value="${contador - pesoPerdidoPorMes}" />  
+								</c:forEach>
+							${pesoIdeal}],"fill":
+							false,"borderColor":"rgb(75, 192, 192)","lineTension":
+								0.1}]},"options":{}});
+					</script>
+			</div>
 			<br>
 			</div>
 		

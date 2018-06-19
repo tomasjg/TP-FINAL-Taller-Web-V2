@@ -10,10 +10,10 @@
             </div>
 
             <div class="col-md-4">
-                Itegrantes:<br>
+                Integrantes:<br>
                 Ariel Martin,
                 Tomas Gomez,
-                Damian Galloso
+                Damian Gayoso Cuesta
             </div>
             <div class="col-md-4">
                 Taller Web 1<br>
