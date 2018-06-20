@@ -39,7 +39,7 @@
 				<form:radiobutton path="paciente.sexo" value="Mujer"/> Mujer
 				<br><br>				
 				<form:label path="paciente.edad">Edad</form:label> 
-				<form:input path="paciente.edad" id="edad" type="text" class="form-control"/>
+				<form:input path="paciente.edad" id="edad" type="number" class="form-control"/>
 				<br>   
 				<form:label path="paciente.ejercicio">Ejercicio</form:label>
 				<br> 

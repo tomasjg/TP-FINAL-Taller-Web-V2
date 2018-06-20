@@ -35,7 +35,7 @@
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 			
 				<h3>Seleccione Intensidad:</h3>
-				<form:radiobutton path = "intensidad" value = "Normal" label = "Normal" /><br>
+				<form:radiobutton path = "intensidad" value = "Normal" label = "Normal" checked="checked"/><br>
                 <form:radiobutton path = "intensidad" value = "Intenso" label = "Intenso" /><br>
 				<br>
 				Excluir alimentos:<br>

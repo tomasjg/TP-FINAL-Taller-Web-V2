@@ -57,7 +57,7 @@
 				</c:forEach>
 			
 				<br><b>Plan Recomendado:</b>
-				<form:radiobutton path="plan.id" value="${planSugerido.id}"/> ${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
+				<form:radiobutton path="plan.id" value="${planSugerido.id}" checked="checked"/> ${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
 				<!--  
 				${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
 				-->

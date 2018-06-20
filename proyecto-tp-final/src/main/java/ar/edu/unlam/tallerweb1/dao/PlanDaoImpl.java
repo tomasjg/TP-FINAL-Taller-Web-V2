@@ -67,7 +67,18 @@ public class PlanDaoImpl implements PlanDao {
 				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
 		
 		Plan planBase = new Plan();
-		planBase.setIntensidad(pacienteDTO.getIntensidad());
+		
+		//seteamos las calorias del plan segun la intensidad
+		switch(pacienteDTO.getIntensidad() ) {
+		case "Normal":
+			planBase.setCaloriasDiarias(1500);	
+			planBase.setIntensidad("Normal");
+			break;
+		case "Intenso": 
+			planBase.setCaloriasDiarias(1000);
+			planBase.setIntensidad("Intenso");
+			break;
+		}
 
 		
 		//nombre base para el plan segun exclusiones
@@ -102,19 +113,12 @@ public class PlanDaoImpl implements PlanDao {
 		if(pacienteDTO.isAptoCeliaco()==true && pacienteDTO.isAptoHipertenso()==true ) {
 			planBase.setNombre(planBase.getNombre()+"(bajo en sodio sin glutem)");
 		}
-		//seteamos las calorias del plan segun la intensidad
 
-		switch(pacienteDTO.getIntensidad() ) {
-		case "Normal":
-			planBase.setCaloriasDiarias(2000);	
-			break;
-		case "Intenso": 
-			planBase.setCaloriasDiarias(1500);
-			break;
-		}
 		
 		//seteamos el plan Dummy
 		planBase.setListaComidasPorDia(dummyPlan);
+		
+		session.save(planBase);
 		
 		return planBase;
 	}

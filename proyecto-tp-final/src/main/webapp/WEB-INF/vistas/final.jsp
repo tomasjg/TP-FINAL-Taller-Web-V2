@@ -39,7 +39,7 @@
 			<br>
 			<span>Intensidad: ${pacienteDTO.plan.intensidad}</span>
 			<br>
-			<span>Listado de comidas: ${pacienteDTO.plan.listaComidasPorDia}</span>
+			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
 			<br>
 			<br>
 			-----
