@@ -12,6 +12,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.PlanDao;
+import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Plan;
 
 @Service("servicioPacientes")
@@ -35,5 +36,8 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 	public List<Plan> obtenerPlanesFiltrados(String intensidad, boolean aptoCeliaco, boolean aptoHipertenso, boolean sinCarne, boolean sinLacteos) {
 		return planDao.obtenerPlanesFiltrados(intensidad, aptoCeliaco, aptoHipertenso, sinCarne, sinLacteos);
 	}
-
+	
+	public Plan generarPlanSugerido(PacienteDTO pacienteDTO) {
+		return planDao.generarPlanSugerido(pacienteDTO);
+	}
 }

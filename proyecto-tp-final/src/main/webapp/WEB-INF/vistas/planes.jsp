@@ -41,17 +41,28 @@
 			<c:if test="${pacienteDTO.aptoCeliaco}" >
 				<span>Apto celiaquía</span>
 			</c:if>
+			<c:if test="${pacienteDTO.intensidad}" >
+				<span>${pacienteDTO.intensidad}</span>
+			</c:if>
 			<span></span>
 			<br>
 			<br>
 			
 			<br>
 			<form:form action="final" method="POST" modelAttribute="pacienteDTO">
+			
+			  
 				<c:forEach items="${planesSugeridos}" var = "item" >
 					<form:radiobutton path="plan.id" value="${item.id}"/> ${item.nombre} - ${item.caloriasDiarias} calorías diarias <br>
 				</c:forEach>
+			
+				<br><b>Plan Recomendado:</b>
+				<form:radiobutton path="plan.id" value="${planSugerido.id}"/> ${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
+				<!--  
+				${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
+				-->
+				<br>
 				
-					
 				<form:input type="hidden" path="paciente.peso" value="${paciente.peso}"/>
 				<form:input type="hidden" path="paciente.altura" value="${paciente.altura}"/>
 				<form:input type="hidden" path="paciente.sexo" value="${paciente.sexo}"/>

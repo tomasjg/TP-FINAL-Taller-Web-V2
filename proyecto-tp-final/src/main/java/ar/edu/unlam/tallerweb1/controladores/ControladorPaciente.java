@@ -81,8 +81,14 @@ public class ControladorPaciente {
 		model.put("planesSugeridos", planesSugeridos);
 		model.put("pacienteDTO", pacienteDTO);
 		
+		//generar el plan especifico
+		Plan planSugerido=new Plan();
+		planSugerido=ServicioPacientes.generarPlanSugerido(pacienteDTO);
+		model.put("planSugerido", planSugerido);
+		
 		return new ModelAndView("planes", model);
 	}
+	
 	@RequestMapping(path = "/final", method = RequestMethod.POST)
 	public ModelAndView crearGraficoCalorias2(@ModelAttribute("pacienteDTO") PacienteDTO pacienteDTO, HttpServletRequest request) {
 		ModelMap model = new ModelMap();

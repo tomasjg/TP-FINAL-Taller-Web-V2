@@ -11,6 +11,7 @@ import org.hibernate.SessionFactory;
 import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
+import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Plan;
 
 @Repository("planDao")
@@ -48,12 +49,97 @@ public class PlanDaoImpl implements PlanDao {
 	}
 	
 	@Override
+	public Plan generarPlanSugerido(PacienteDTO pacienteDTO) {
+
+		final Session session = sessionFactory.getCurrentSession();
+		
+		String dummyPlan="<b>Desayuno:</b><br>"+ 
+				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 
+				"<b>Media mañana:</b><br>" +
+				"Yogur descremado con frutillas.<br>" +  
+				"<b>Almuerzo:</b><br>" +
+				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.<br>" +
+				"<b>Media tarde:</b><br>" +
+				"Gaseosa light + 2 bay biscuits.<br>" +
+				"<b>Merienda:</b><br>" +
+				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
+				"<b>Cena:</b><br>" +
+				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
+		
+		Plan planBase = new Plan();
+		planBase.setIntensidad(pacienteDTO.getIntensidad());
+
+		
+		//nombre base para el plan segun exclusiones
+		if(pacienteDTO.isExcluirCarne()==false && pacienteDTO.isExcluirLacteos()==false ) {
+			planBase.setNombre("Plan Bajo en grasas y Azucares");
+			planBase.setSinCarne(false);
+			planBase.setSinLacteos(false);
+		}
+		if(pacienteDTO.isExcluirCarne()==false && pacienteDTO.isExcluirLacteos()==true ) {
+			planBase.setNombre("Plan Intolerante Lactosa");
+			planBase.setSinCarne(false);
+			planBase.setSinLacteos(true);
+			
+		}
+		if(pacienteDTO.isExcluirCarne()==true && pacienteDTO.isExcluirLacteos()==false ) {
+			planBase.setNombre("Plan Lacto-Vegetariano");
+			planBase.setSinCarne(true);
+			planBase.setSinLacteos(false);
+		}
+		if(pacienteDTO.isExcluirCarne()==true && pacienteDTO.isExcluirLacteos()==true ) {
+			planBase.setNombre("Plan Vegetariano");
+			planBase.setSinCarne(true);
+			planBase.setSinLacteos(true);
+		}
+		//especificaciones segun enfermedades
+		if(pacienteDTO.isAptoCeliaco()==false && pacienteDTO.isAptoHipertenso()==true ) {
+			planBase.setNombre(planBase.getNombre()+"(bajo en sodio)");
+		}
+		if(pacienteDTO.isAptoCeliaco()==true && pacienteDTO.isAptoHipertenso()==false ) {
+			planBase.setNombre(planBase.getNombre()+"(sin glutem)");
+		}
+		if(pacienteDTO.isAptoCeliaco()==true && pacienteDTO.isAptoHipertenso()==true ) {
+			planBase.setNombre(planBase.getNombre()+"(bajo en sodio sin glutem)");
+		}
+		//seteamos las calorias del plan segun la intensidad
+
+		switch(pacienteDTO.getIntensidad() ) {
+		case "Normal":
+			planBase.setCaloriasDiarias(2000);	
+			break;
+		case "Intenso": 
+			planBase.setCaloriasDiarias(1500);
+			break;
+		}
+		
+		//seteamos el plan Dummy
+		planBase.setListaComidasPorDia(dummyPlan);
+		
+		return planBase;
+	}
+	
+	
+	@Override
 	public void insertarPlanesIniciales(){
 
 		final Session session = sessionFactory.getCurrentSession();
 		
 		session.createSQLQuery("truncate table plan").executeUpdate();
 		
+		String dummyPlan="<b>Desayuno:</b><br>"+ 
+				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 
+				"<b>Media mañana:</b><br>" +
+				"Yogur descremado con frutillas.<br>" +  
+				"<b>Almuerzo:</b><br>" +
+				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.<br>" +
+				"<b>Media tarde:</b><br>" +
+				"Gaseosa light + 2 bay biscuits.<br>" +
+				"<b>Merienda:</b><br>" +
+				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
+				"<b>Cena:</b><br>" +
+				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
+		/*
 		Plan planA = new Plan();
 		planA.setNombre("Plan Vegetariano");
 		planA.setAptoCeliaco(true);
@@ -177,11 +263,59 @@ public class PlanDaoImpl implements PlanDao {
 				"Cena\r\n" + 
 				"\r\n" + 
 				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.");
+		*/
 		
-		session.save(planA);
-		session.save(planB);
-		session.save(planC);
-		session.save(planD);
+//		session.save(planA);
+//		session.save(planB);
+//		session.save(planC);
+//		session.save(planD);
+		
+		Plan plan0000N = new Plan();
+		plan0000N.setNombre("Plan Bajo en grasas y azucares");
+		plan0000N.setSinCarne(false);
+		plan0000N.setSinLacteos(false);
+		plan0000N.setAptoHipertenso(false);
+		plan0000N.setAptoCeliaco(false);
+		plan0000N.setCaloriasDiarias(1500);
+		plan0000N.setIntensidad("Normal");
+		plan0000N.setListaComidasPorDia(dummyPlan);
+		
+		Plan plan1000N = new Plan();
+		plan1000N.setNombre("Plan Lacto-Vegetariano");
+		plan1000N.setSinCarne(true);
+		plan1000N.setSinLacteos(false);
+		plan1000N.setAptoHipertenso(false);
+		plan1000N.setAptoCeliaco(false);
+		plan1000N.setCaloriasDiarias(1500);
+		plan1000N.setIntensidad("Normal");
+		plan1000N.setListaComidasPorDia(dummyPlan);
+		
+		Plan plan1100N = new Plan();
+		plan1100N.setNombre("Plan Vegetariano");
+		plan1100N.setSinCarne(true);
+		plan1100N.setSinLacteos(true);
+		plan1100N.setAptoHipertenso(false);
+		plan1100N.setAptoCeliaco(false);
+		plan1100N.setCaloriasDiarias(1500);
+		plan1100N.setIntensidad("Normal");
+		plan1100N.setListaComidasPorDia(dummyPlan);
+		
+		Plan plan0100N = new Plan();
+		plan0100N.setNombre("Plan Intolerante Lactosa");
+		plan0100N.setSinCarne(false);
+		plan0100N.setSinLacteos(true);
+		plan0100N.setAptoHipertenso(false);
+		plan0100N.setAptoCeliaco(false);
+		plan0100N.setCaloriasDiarias(1500);
+		plan0100N.setIntensidad("Normal");
+		plan0100N.setListaComidasPorDia(dummyPlan);
+		
+		
+
+		session.save(plan0000N);
+		session.save(plan0100N);
+		session.save(plan1100N);
+		session.save(plan0100N);
 		
 	}
 	
