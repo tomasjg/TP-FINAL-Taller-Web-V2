@@ -98,7 +98,9 @@ public class ControladorPaciente {
 		pacienteDTO.setPlan(planElegido);
 		
 		Paciente paciente = pacienteDTO.getPaciente();
-
+		
+		Double caloriasPGPorDia;
+		Double pesoAPerderOGanar;
 		Double peso = paciente.getPeso();
 		Double altura = paciente.getAltura();
 		String sexo = paciente.getSexo();
@@ -110,16 +112,25 @@ public class ControladorPaciente {
 		Double pesoIdeal = formula.calcularPesoIdeal(altura, sexo);
 		Double tmb = formula.calcularTMB(peso, altura, edad, sexo, ejercicio);
 		
-		Double pesoAPerder = peso - pesoIdeal;
-		Double caloriasPerdidasPorDia = tmb - pacienteDTO.getPlan().getCaloriasDiarias();
-		int diasObjetivo = (int)(((pesoAPerder * 1000) * 7) / caloriasPerdidasPorDia);
+		if(peso > pesoIdeal){
+		pesoAPerderOGanar = peso - pesoIdeal;}
+		else{
+		pesoAPerderOGanar = pesoIdeal - peso;}
+		
+		if(tmb > pacienteDTO.getPlan().getCaloriasDiarias()) {
+		caloriasPGPorDia = tmb - pacienteDTO.getPlan().getCaloriasDiarias();}
+		else {
+		caloriasPGPorDia = pacienteDTO.getPlan().getCaloriasDiarias() - tmb;
+		}
+		
+		int diasObjetivo = (int)(((pesoAPerderOGanar * 1000) * 7) / caloriasPGPorDia);
 		
 		model.put("peso", peso);
 		model.put("tmb", tmb);
 		model.put("imc", imc);
 		model.put("pesoIdeal", pesoIdeal);
-		model.put("pesoAPerder", pesoAPerder);
-		model.put("caloriasPerdidasPorDia", caloriasPerdidasPorDia);
+		model.put("pesoAPerderOGanar", pesoAPerderOGanar);
+		model.put("caloriasPGPorDia", caloriasPGPorDia);
 		model.put("diasObjetivo", diasObjetivo);
 		
 		model.put("pacienteDTO",pacienteDTO);

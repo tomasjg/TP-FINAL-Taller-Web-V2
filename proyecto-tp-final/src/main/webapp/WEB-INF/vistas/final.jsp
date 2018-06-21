@@ -50,14 +50,26 @@
 			<br>
 			<span>Peso ideal: ${pesoIdeal}</span>
 			<br>
-			<span>Peso a perder: ${pesoAPerder}</span>
+			<c:if test="${peso > pesoIdeal}">
+			<span>Peso a perder: ${pesoAPerderOGanar}</span>
 			<br>
-			<span>Calorías perdidas por día: ${caloriasPerdidasPorDia}</span>
+			</c:if>
+			<c:if test="${peso < pesoIdeal}">
+			<span>Peso a Ganar: ${pesoAPerderOGanar}</span>
 			<br>
+			</c:if>
+			<c:if test="${tmb > pacienteDTO.plan.caloriasDiarias}">
+			<span>Calorías perdidas por día: ${caloriasPGPorDia}</span>
+			<br>
+			</c:if>
+			<c:if test="${tmb < pacienteDTO.plan.caloriasDiarias}">
+			<span>Calorías Ganadas por día: ${caloriasPGPorDia}</span>
+			<br>
+			</c:if>
 			<span>Días objetivo: ${diasObjetivo}</span>
 			<br>
 			-----
-			<c:set var="pesoPerdidoPorMes" value="${(caloriasPerdidasPorDia*4)/1000}" />
+			<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 			<c:set var="contador" value="${peso}" />  
 			<div class="chartjs-wrapper">
 					<canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
@@ -67,11 +79,18 @@
 				      				</c:forEach>],
 				      		"datasets":
 						[{"label":"Peso","data":[
-							<c:set var="pesoPerdidoPorMes" value="${(caloriasPerdidasPorDia*4)/1000}" />
+								<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 								<c:set var="contador" value="${peso}" />   
 								<c:forEach var = "i" begin = "0" end = "${(diasObjetivo / 30)+1}">	        	 
 								${contador}, 
-								  	 <c:set var="contador" value="${contador - pesoPerdidoPorMes}" />  
+								<c:if test="${peso < pesoIdeal}">
+								<c:set var="contador" value="${contador + pesoPGPorMes}" /> 
+								</c:if>
+								
+								<c:if test="${peso > pesoIdeal}">
+								<c:set var="contador" value="${contador - pesoPGPorMes}" /> 
+								</c:if> 
+								
 								</c:forEach>
 							${pesoIdeal}],"fill":
 							false,"borderColor":"rgb(75, 192, 192)","lineTension":
