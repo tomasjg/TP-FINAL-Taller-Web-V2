@@ -10,7 +10,20 @@ package ar.edu.unlam.tallerweb1.modelo;
 	private boolean aptoCeliaco;
 	private String [] alimentosExcluidos;
 	private String [] enfermedadesPadecidas;
+	private Double IMC;
 	
+	public Double getIMC() {
+		Double altura=(this.getPaciente().getAltura() /100);
+		Double peso=this.paciente.getPeso();
+		Double IMC =peso / (altura*altura);
+		this.IMC=IMC;
+		return IMC;
+	}
+	public void setIMC(Double peso,Double altura) {
+		altura=(this.getPaciente().getAltura() / 100d);
+		peso=this.paciente.getPeso();
+		this.IMC =peso / (altura*altura);
+	}
 	public Paciente getPaciente() {
 		return paciente;
 	}

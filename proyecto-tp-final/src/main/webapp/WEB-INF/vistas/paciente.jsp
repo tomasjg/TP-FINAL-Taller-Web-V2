@@ -18,7 +18,7 @@
             <nav>
                  <ul class="">
                     <li><a class="btn active white" href="#">PACIENTE</a></li>
-                    <li><a href="#">EXCLUCIONES</a></li>
+                    <li><a href="#">EXCLUSIONES</a></li>
                     <li><a href="#">PLANES</a></li>
                     <li><a href="#">TU PLAN</a></li>
                 </ul>
@@ -29,17 +29,17 @@
 				
 				<form:form action="exclusiones" method="POST" modelAttribute="pacienteDTO">
 				<form:label path="paciente.altura">Altura</form:label>
-				<form:input path="paciente.altura" id="altura" type="number" class="form-control" required="required" placeholder="Exprese su altura en centimetros "/>
+				<form:input path="paciente.altura" id="altura" type="number" class="form-control" required="required" placeholder="Exprese su altura en centimetros" min="150"/>
 				<br>
 				<form:label path="paciente.peso">Peso</form:label>
-				<form:input path="paciente.peso" id="peso" type="number" class="form-control" required="required" placeholder="Exprese su peso en kilogramos" /> 
+				<form:input path="paciente.peso" id="peso" type="number" class="form-control" required="required" placeholder="Exprese su peso en kilogramos" min="1"/> 
 				<br>    		  
 				<form:label path="paciente.sexo">Sexo</form:label> 
 				<form:radiobutton path="paciente.sexo" value="Hombre" checked="checked"/> Hombre
 				<form:radiobutton path="paciente.sexo" value="Mujer"/> Mujer
 				<br><br>				
 				<form:label path="paciente.edad">Edad</form:label> 
-				<form:input path="paciente.edad" id="edad" type="number" class="form-control"/>
+				<form:input path="paciente.edad" id="edad" type="number" class="form-control" min="18"/>
 				<br>   
 				<form:label path="paciente.ejercicio">Ejercicio</form:label>
 				<br> 

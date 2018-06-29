@@ -69,5 +69,10 @@ public class Paciente {
 		this.ejercicio = ejercicio;
 	}
 	
+	public Double calcularImc(){
+		Formula formula= new Formula();
+		return formula.calcularIMC(this.peso, this.altura);
+	}
+	
 	
 }

@@ -17,7 +17,7 @@
             <nav>
                  <ul class="">
                     <li><a href="#">PACIENTE</a></li>
-                    <li><a class="btn active white" href="#">EXCLUCIONES</a></li>
+                    <li><a class="btn active white" href="#">EXCLUSIONES</a></li>
                     <li><a href="#">PLANES</a></li>
                     <li><a href="#">TU PLAN</a></li>
                 </ul>
@@ -34,7 +34,7 @@
 				<form:input type="hidden" path="paciente.edad" value="${paciente.edad}"/>
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 			
-				<h3>Seleccione Intensidad:</h3>
+				<h3>Seleccione Intensidad de su plan:</h3>
 				<form:radiobutton path = "intensidad" value = "Normal" label = "Normal" checked="checked"/><br>
                 <form:radiobutton path = "intensidad" value = "Intenso" label = "Intenso" /><br>
 				<br>

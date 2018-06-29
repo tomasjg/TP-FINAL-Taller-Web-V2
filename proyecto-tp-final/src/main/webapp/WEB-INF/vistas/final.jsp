@@ -18,7 +18,7 @@
             <nav>
                  <ul class="">
                     <li><a href="#">PACIENTE</a></li>
-                    <li><a href="#">EXCLUCIONES</a></li>
+                    <li><a href="#">EXCLUSIONES</a></li>
                     <li><a href="#">PLANES</a></li>
                     <li><a class="btn active white" href="#">TU PLAN</a></li>
                 </ul>
@@ -31,22 +31,23 @@
 			
 			<h3>Plan escogido: </h3>
 			
-			<span>ID: ${pacienteDTO.plan.id}</span>
+			<!--  <span>ID: ${pacienteDTO.plan.id}</span> -->
 			<br>
 			<span>Nombre: ${pacienteDTO.plan.nombre}</span>
 			<br>
 			<span>Calorías diarias: ${pacienteDTO.plan.caloriasDiarias}</span>
 			<br>
 			<span>Intensidad: ${pacienteDTO.plan.intensidad}</span>
-			<br>
+			<br><br>
 			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
 			<br>
-			<br>
-			-----
+			<h3>Datos del Paciente</h3>
 			<br>
 			<span>Peso: ${peso}</span>
 			<br>
-			<span>TMB: ${tmb}</span>
+			<span data-toggle="tooltip" data-placement="top" title="La tasa metabólica basal (TMB) es el cálculo de las calorías mínimas que precisa una persona para realizar sus funciones orgánicas cada día.">
+				TMB: ${tmb}
+			</span>
 			<br>
 			<span>Peso ideal: ${pesoIdeal}</span>
 			<br>
@@ -68,7 +69,7 @@
 			</c:if>
 			<span>Días objetivo: ${diasObjetivo}</span>
 			<br>
-			-----
+			<h3>Tiempo estimado en cumplir objetivo</h3>
 			<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 			<c:set var="contador" value="${peso}" />  
 			<div class="chartjs-wrapper">

@@ -16,7 +16,7 @@
             <nav>
                  <ul class="">
                     <li><a href="#">PACIENTE</a></li>
-                    <li><a href="#">EXCLUCIONES</a></li>
+                    <li><a href="#">EXCLUSIONES</a></li>
                     <li><a class="btn active white" href="#">PLANES</a></li>
                     <li><a href="#">TU PLAN</a></li>
                 </ul>
@@ -57,10 +57,11 @@
 				</c:forEach>
 			
 				<br><b>Plan Recomendado:</b>
+				<!--
 				<form:radiobutton path="plan.id" value="${planSugerido.id}" checked="checked"/> ${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
-				<!--  
+				-->  
 				${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
-				-->
+				
 				<br>
 				
 				<form:input type="hidden" path="paciente.peso" value="${paciente.peso}"/>
@@ -70,7 +71,7 @@
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 				
 				<br>
-				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Siguiente</button>
+				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Ver Plan</button>
 	  	    </form:form>
 	  	    
 	  	    </div>

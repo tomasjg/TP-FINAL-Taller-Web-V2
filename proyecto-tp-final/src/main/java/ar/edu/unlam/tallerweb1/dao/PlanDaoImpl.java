@@ -67,39 +67,51 @@ public class PlanDaoImpl implements PlanDao {
 				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
 		
 		Plan planBase = new Plan();
-		
+		planBase.setNombre("Plan ");
 		//seteamos las calorias del plan segun la intensidad
 		switch(pacienteDTO.getIntensidad() ) {
 		case "Normal":
-			planBase.setCaloriasDiarias(1500);	
+			planBase.setCaloriasDiarias(1500);
+			if(pacienteDTO.getIMC()<18.5){
+				planBase.setCaloriasDiarias(3000);
+			}
 			planBase.setIntensidad("Normal");
+			
 			break;
 		case "Intenso": 
 			planBase.setCaloriasDiarias(1000);
+			if(pacienteDTO.getIMC()<18.5){
+				planBase.setCaloriasDiarias(3500);
+			}
+			
 			planBase.setIntensidad("Intenso");
 			break;
 		}
 
 		
 		//nombre base para el plan segun exclusiones
+		if(pacienteDTO.getIMC()<18.5){
+			planBase.setNombre(planBase.getNombre()+"Alto en Calorias ");
+		}
+		
 		if(pacienteDTO.isExcluirCarne()==false && pacienteDTO.isExcluirLacteos()==false ) {
-			planBase.setNombre("Plan Bajo en grasas y Azucares");
+			planBase.setNombre(planBase.getNombre()+"Bajo en grasas y Azucares");
 			planBase.setSinCarne(false);
 			planBase.setSinLacteos(false);
 		}
 		if(pacienteDTO.isExcluirCarne()==false && pacienteDTO.isExcluirLacteos()==true ) {
-			planBase.setNombre("Plan Intolerante Lactosa");
+			planBase.setNombre(planBase.getNombre()+"Intolerante Lactosa");
 			planBase.setSinCarne(false);
 			planBase.setSinLacteos(true);
 			
 		}
 		if(pacienteDTO.isExcluirCarne()==true && pacienteDTO.isExcluirLacteos()==false ) {
-			planBase.setNombre("Plan Lacto-Vegetariano");
+			planBase.setNombre(planBase.getNombre()+"Lacto-Vegetariano");
 			planBase.setSinCarne(true);
 			planBase.setSinLacteos(false);
 		}
 		if(pacienteDTO.isExcluirCarne()==true && pacienteDTO.isExcluirLacteos()==true ) {
-			planBase.setNombre("Plan Vegetariano");
+			planBase.setNombre(planBase.getNombre()+"Vegetariano");
 			planBase.setSinCarne(true);
 			planBase.setSinLacteos(true);
 		}

@@ -4,8 +4,7 @@
 
         <div class="row">
             <div class="col-md-4">
-                Universidad de la Matanza<br>
-                Florencio Varera 1903 
+                Universidad Nacional<br>de la Matanza<br>
     
             </div>
 
