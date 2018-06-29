@@ -23,7 +23,7 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 	private PlanDao planDao;
 
 	@Override
-	public Plan consultarPlan (int id) {
+	public Plan consultarPlan (Long id) {
 		return planDao.consultarPlan(id);
 	}
 

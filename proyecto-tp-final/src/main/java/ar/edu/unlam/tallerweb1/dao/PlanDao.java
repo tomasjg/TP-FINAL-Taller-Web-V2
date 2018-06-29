@@ -9,7 +9,7 @@ import ar.edu.unlam.tallerweb1.modelo.Plan;
 public interface PlanDao {
 	
 	// Método para obtener los datos de un plan mediante el ID.
-	Plan consultarPlan (int id);
+	Plan consultarPlan (Long id);
 	
 	// Método para insertar los planes al levantar la aplicación. Se usa para poder probar la aplicación. Cuando se desarrolle el ABM de planes, este se va a borrar.
 	void insertarPlanesIniciales();

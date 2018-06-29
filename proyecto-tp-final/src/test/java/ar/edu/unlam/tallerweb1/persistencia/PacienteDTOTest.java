@@ -15,7 +15,7 @@ public class PacienteDTOTest extends SpringTest{
 	@Test @Transactional @Rollback
 	public void probarQueElIMCdeSobrepeso(){
 		
-		Paciente paciente = new Paciente(50d, 170d);
+		Paciente paciente = new Paciente(80d, 170d);
 		PacienteDTO pacienteDTO = new PacienteDTO();
 		pacienteDTO.setPaciente(paciente);
 		

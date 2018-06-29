@@ -8,7 +8,7 @@ import ar.edu.unlam.tallerweb1.modelo.Plan;
 // Interface que define los metodos del Servicio de Pacientes.
 public interface ServicioPacientes {
 
-	Plan consultarPlan(int id);
+	Plan consultarPlan(Long id);
 
 	void insertarPlanesIniciales();
 	

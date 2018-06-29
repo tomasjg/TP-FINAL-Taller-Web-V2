@@ -21,7 +21,7 @@ public class PlanDaoImpl implements PlanDao {
     private SessionFactory sessionFactory;
 
 	@Override
-	public Plan consultarPlan(int id) {
+	public Plan consultarPlan(Long id) {
 
 		final Session session = sessionFactory.getCurrentSession();
 		return (Plan) session.createCriteria(Plan.class)

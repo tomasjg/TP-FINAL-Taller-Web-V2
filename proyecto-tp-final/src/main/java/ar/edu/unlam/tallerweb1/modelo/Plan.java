@@ -12,7 +12,7 @@ import javax.persistence.Id;
 public class Plan {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private int id;
+	private Long id;
 	private String nombre;
 	private String intensidad;
 	private boolean sinCarne;
@@ -24,10 +24,10 @@ public class Plan {
 	@Column(columnDefinition = "LONGTEXT")
 	private String listaComidasPorDia; // Por ahora. Esto despues se va a borrar y reemplazar por el listado de arriba
 	
-	public int getId() {
+	public Long getId() {
 		return id;
 	}
-	public void setId(int id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 	public String getNombre() {
