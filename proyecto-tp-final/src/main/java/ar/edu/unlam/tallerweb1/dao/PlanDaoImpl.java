@@ -155,136 +155,14 @@ public class PlanDaoImpl implements PlanDao {
 				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
 				"<b>Cena:</b><br>" +
 				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
-		/*
-		Plan planA = new Plan();
-		planA.setNombre("Plan Vegetariano");
-		planA.setAptoCeliaco(true);
-		planA.setAptoHipertenso(true);
-		planA.setSinCarne(true);
-		planA.setSinLacteos(false);
-		planA.setCaloriasDiarias(1200);
-		planA.setIntensidad("Normal");
-		planA.setListaComidasPorDia("Desayuno\r\n" + 
-				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.\r\n" + 
-				"Media mañana\r\n" + 
-				"\r\n" + 
-				"Yogur descremado con frutillas.\r\n" + 
-				"\r\n" + 
-				"Almuerzo\r\n" + 
-				"\r\n" + 
-				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.\r\n" + 
-				"\r\n" + 
-				"Media tarde\r\n" + 
-				"\r\n" + 
-				"Gaseosa light + 2 bay biscuits.\r\n" + 
-				"\r\n" + 
-				"Merienda\r\n" + 
-				"\r\n" + 
-				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.\r\n" + 
-				"\r\n" + 
-				"Cena\r\n" + 
-				"\r\n" + 
-				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.");
 		
-		Plan planB = new Plan();
-		planB.setNombre("Plan Intolerante Lactosa");
-		planB.setAptoCeliaco(true);
-		planB.setAptoHipertenso(false);
-		planB.setSinCarne(false);
-		planB.setSinLacteos(true);
-		planB.setCaloriasDiarias(1500);
-		planB.setIntensidad("Normal");
-		planB.setListaComidasPorDia("Desayuno\r\n" + 
-				" \r\n" + 
-				"Infusión con ½ taza de leche descremada + 2 rodajas de pan integral con dos fetas de queso de máquina.\r\n" + 
-				"\r\n" + 
-				"Media mañana\r\n" + 
-				"\r\n" + 
-				"1 café cortado + 1 roll de masa light con queso blanco descremado y kiwi en trozos.\r\n" + 
-				"\r\n" + 
-				"Almuerzo\r\n" + 
-				"\r\n" + 
-				"Milanesa de berenjena a la napolitana con queso fresco light + ensalada primavera (arvejas, zanahoria y choclo) + gelatina light con trozos de frutas.\r\n" + 
-				"\r\n" + 
-				"Media tarde\r\n" + 
-				"\r\n" + 
-				"Infusión + 2 galletitas dulces light.\r\n" + 
-				"\r\n" + 
-				"Merienda\r\n" + 
-				"\r\n" + 
-				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con manteca light.\r\n" + 
-				"\r\n" + 
-				"Cena\r\n" + 
-				"\r\n" + 
-				"Filete de merluza a la marinera light (al horno y con harina integral) + ensalada de hinojo, berro y tomates cherry + flan light con 2 nueces picadas.");
-		
-		Plan planC = new Plan();
-		planC.setNombre("Plan Sin Gluten");
-		planC.setAptoCeliaco(true);
-		planC.setAptoHipertenso(true);
-		planC.setSinCarne(false);
-		planC.setSinLacteos(false);
-		planC.setCaloriasDiarias(1800);
-		planC.setIntensidad("Normal");
-		planC.setListaComidasPorDia("Desayuno\r\n" + 
-				"\r\n" + 
-				"Infusión con ½ taza de leche descremada + 3 galletitas integrales con queso untable descremado.\r\n" + 
-				"\r\n" + 
-				"Media mañana\r\n" + 
-				"\r\n" + 
-				"1 leche fermentada + yogur descremado con cereales sin azúcar.\r\n" + 
-				"\r\n" + 
-				"Almuerzo\r\n" + 
-				"\r\n" + 
-				"Ensalada de arroz integral, lechuga, cebolla morada, tomate, repollo blanco y 1 huevo duro + 1 manzana asada a la canela.\r\n" + 
-				"\r\n" + 
-				"Media tarde\r\n" + 
-				"\r\n" + 
-				"1 vaso de jugo light + 1 casete de queso magro.\r\n" + 
-				"\r\n" + 
-				"Merienda\r\n" + 
-				"\r\n" + 
-				"Infusión con ½ taza de leche descremada + 3 galletitas de agua con mermelada light.\r\n" + 
-				"\r\n" + 
-				"Cena\r\n" + 
-				"\r\n" + 
-				"Suprema al limón + ensalada de espinaca, radicheta y champiñones + 1 taza de frutillas.");
-		
-		Plan planD = new Plan();
-		planD.setNombre("Plan Vegetariano2");
-		planD.setAptoCeliaco(true);
-		planD.setAptoHipertenso(true);
-		planD.setSinCarne(true);
-		planD.setSinLacteos(false);
-		planD.setCaloriasDiarias(1200);
-		planD.setIntensidad("Normal");
-		planD.setListaComidasPorDia("Desayuno\r\n" + 
-				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.\r\n" + 
-				"Media mañana\r\n" + 
-				"\r\n" + 
-				"Yogur descremado con frutillas.\r\n" + 
-				"\r\n" + 
-				"Almuerzo\r\n" + 
-				"\r\n" + 
-				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.\r\n" + 
-				"\r\n" + 
-				"Media tarde\r\n" + 
-				"\r\n" + 
-				"Gaseosa light + 2 bay biscuits.\r\n" + 
-				"\r\n" + 
-				"Merienda\r\n" + 
-				"\r\n" + 
-				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.\r\n" + 
-				"\r\n" + 
-				"Cena\r\n" + 
-				"\r\n" + 
-				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.");
-		*/
-		
-//		session.save(planA);
-//		session.save(planB);
-//		session.save(planC);
-//		session.save(planD);
+		String desayuno="1 yogur descremado con cereal<br>1 fruta";
+		String colacion1="1 vaso grande de jugo light<br>1 yogur descremado";
+		String almuerzo="1 plato grande de ensalada<br>2 mitades de tomate redondo relleno con arroz integral, atún, aceituna y 2 cditas. de mayonesa light<br>1 helado de agua";
+		String merienda="1 latita de gaseosa light<br>1 barrita de cereal light";
+		String colacion2="1 vaso de licuado de durazno con leche descremada<br>1 figazza árabe de salvado con queso fresco descremado y tomate (tostada, tipo pizzeta)";
+		String cena="1 plato de ensalada<br>1 plato de verduras cocidas a elección<br>1 milanesa de soja<br>1 postre light";
+
 		
 		Plan plan0000N = new Plan();
 		plan0000N.setNombre("Plan Bajo en grasas y azucares");
@@ -295,6 +173,13 @@ public class PlanDaoImpl implements PlanDao {
 		plan0000N.setCaloriasDiarias(1500);
 		plan0000N.setIntensidad("Normal");
 		plan0000N.setListaComidasPorDia(dummyPlan);
+		plan0000N.setDesayuno(desayuno);
+		plan0000N.setColacion1(colacion1);
+		plan0000N.setAlmuerzo(almuerzo);
+		plan0000N.setMerienda(merienda);
+		plan0000N.setColacion2(colacion2);
+		plan0000N.setCena(cena);
+		
 		
 		Plan plan1000N = new Plan();
 		plan1000N.setNombre("Plan Lacto-Vegetariano");
@@ -305,6 +190,12 @@ public class PlanDaoImpl implements PlanDao {
 		plan1000N.setCaloriasDiarias(1500);
 		plan1000N.setIntensidad("Normal");
 		plan1000N.setListaComidasPorDia(dummyPlan);
+		plan1000N.setDesayuno(desayuno);
+		plan1000N.setColacion1(colacion1);
+		plan1000N.setAlmuerzo(almuerzo);
+		plan1000N.setMerienda(merienda);
+		plan1000N.setColacion2(colacion2);
+		plan1000N.setCena(cena);
 		
 		Plan plan1100N = new Plan();
 		plan1100N.setNombre("Plan Vegetariano");
@@ -315,6 +206,12 @@ public class PlanDaoImpl implements PlanDao {
 		plan1100N.setCaloriasDiarias(1500);
 		plan1100N.setIntensidad("Normal");
 		plan1100N.setListaComidasPorDia(dummyPlan);
+		plan1100N.setDesayuno(desayuno);
+		plan1100N.setColacion1(colacion1);
+		plan1100N.setAlmuerzo(almuerzo);
+		plan1100N.setMerienda(merienda);
+		plan1100N.setColacion2(colacion2);
+		plan1100N.setCena(cena);
 		
 		Plan plan0100N = new Plan();
 		plan0100N.setNombre("Plan Intolerante Lactosa");
@@ -325,13 +222,35 @@ public class PlanDaoImpl implements PlanDao {
 		plan0100N.setCaloriasDiarias(1500);
 		plan0100N.setIntensidad("Normal");
 		plan0100N.setListaComidasPorDia(dummyPlan);
+		plan0100N.setDesayuno(desayuno);
+		plan0100N.setColacion1(colacion1);
+		plan0100N.setAlmuerzo(almuerzo);
+		plan0100N.setMerienda(merienda);
+		plan0100N.setColacion2(colacion2);
+		plan0100N.setCena(cena);
 		
+		Plan plan0100SP = new Plan();
+		plan0100SP.setNombre("Plan Alto en Carbohidratos");
+		plan0100SP.setSinCarne(false);
+		plan0100SP.setSinLacteos(false);
+		plan0100SP.setAptoHipertenso(false);
+		plan0100SP.setAptoCeliaco(false);
+		plan0100SP.setCaloriasDiarias(3000);
+		plan0100SP.setIntensidad("Normal");
+		plan0100SP.setListaComidasPorDia(dummyPlan);
+		plan0100SP.setDesayuno(desayuno);
+		plan0100SP.setColacion1(colacion1);
+		plan0100SP.setAlmuerzo(almuerzo);
+		plan0100SP.setMerienda(merienda);
+		plan0100SP.setColacion2(colacion2);
+		plan0100SP.setCena(cena);
 		
 
 		session.save(plan0000N);
 		session.save(plan0100N);
 		session.save(plan1100N);
 		session.save(plan0100N);
+		session.save(plan0100SP);
 		
 	}
 	

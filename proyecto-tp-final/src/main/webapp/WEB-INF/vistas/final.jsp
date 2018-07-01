@@ -27,48 +27,57 @@
 		
 		<div class = "main container">
 				
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			<div id="loginbox"  class="mainbox col-md-12 col-md-offset-1 col-sm-1 col-sm-offset-2">
 			
 			<h3>Plan escogido: </h3>
 			
-			<!--  <span>ID: ${pacienteDTO.plan.id}</span> -->
-			<br>
-			<span>Nombre: ${pacienteDTO.plan.nombre}</span>
-			<br>
-			<span>Calorías diarias: ${pacienteDTO.plan.caloriasDiarias}</span>
-			<br>
-			<span>Intensidad: ${pacienteDTO.plan.intensidad}</span>
-			<br><br>
-			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
-			<br>
-			<h3>Datos del Paciente</h3>
-			<br>
-			<span>Peso: ${peso}</span>
-			<br>
-			<span data-toggle="tooltip" data-placement="top" title="La tasa metabólica basal (TMB) es el cálculo de las calorías mínimas que precisa una persona para realizar sus funciones orgánicas cada día.">
-				TMB: ${tmb}
-			</span>
-			<br>
-			<span>Peso ideal: ${pesoIdeal}</span>
-			<br>
-			<c:if test="${peso > pesoIdeal}">
-			<span>Peso a perder: ${pesoAPerderOGanar}</span>
-			<br>
-			</c:if>
-			<c:if test="${peso < pesoIdeal}">
-			<span>Peso a Ganar: ${pesoAPerderOGanar}</span>
-			<br>
-			</c:if>
-			<c:if test="${tmb > pacienteDTO.plan.caloriasDiarias}">
-			<span>Calorías perdidas por día: ${caloriasPGPorDia}</span>
-			<br>
-			</c:if>
-			<c:if test="${tmb < pacienteDTO.plan.caloriasDiarias}">
-			<span>Calorías Ganadas por día: ${caloriasPGPorDia}</span>
-			<br>
-			</c:if>
-			<span>Días objetivo: ${diasObjetivo}</span>
-			<br>
+		<div id="table" class="mainbox col-md-12  col-sm-10 ">
+			
+			<h3> ${pacienteDTO.plan.nombre}</h3>
+			<h4>Intensidad: ${pacienteDTO.plan.intensidad } ${pacienteDTO.plan.caloriasDiarias } Kcal. diarias</h4> 
+
+        <table id="acrylic">
+            <thead>
+                <tr>
+                    <th>Comida</th>
+                    <th>Alimentos</th>      
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Desayuno</td>
+                    <td>${pacienteDTO.plan.desayuno }</td>
+                </tr>
+                <tr>
+                    <td>Media mañana</td>
+                    <td>${pacienteDTO.plan.colacion1}</td>
+                </tr>
+                <tr>
+                    <td>Almuerzo</td>
+                    <td>${pacienteDTO.plan.almuerzo}</td>
+                </tr>
+                <tr>
+                    <td>Merienda</td>
+                    <td>${pacienteDTO.plan.merienda}</td>
+                </tr>
+                <tr>
+                    <td>Media tarde</td>
+                    <td>${pacienteDTO.plan.colacion2}</td>
+                </tr>
+                <tr>
+                    <td>Cena</td>
+                    <td>${pacienteDTO.plan.cena}</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
+
+<%-- 			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
+			<br> --%>
+			
+
+			
+			<div class="mainbox col-md-6 ">
 			<h3>Tiempo estimado en cumplir objetivo</h3>
 			<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 			<c:set var="contador" value="${peso}" />  
@@ -98,7 +107,38 @@
 								0.1}]},"options":{}});
 					</script>
 			</div>
-			<br>
+			</div>
+			
+						<div class="mainbox col-md-5 ">
+				<h3>Datos del Paciente</h3>
+				<br>
+				<span>Peso: ${peso}</span>
+				<br>
+				<span data-toggle="tooltip" data-placement="top" title="La tasa metabólica basal (TMB) es el cálculo de las calorías mínimas que precisa una persona para realizar sus funciones orgánicas cada día.">
+					TMB: ${tmb}
+				</span>
+				<br>
+				<span>Peso ideal: ${pesoIdeal}</span>
+				<br>
+				<c:if test="${peso > pesoIdeal}">
+				<span>Peso a perder: ${pesoAPerderOGanar}</span>
+				<br>
+				</c:if>
+				<c:if test="${peso < pesoIdeal}">
+				<span>Peso a Ganar: ${pesoAPerderOGanar}</span>
+				<br>
+				</c:if>
+				<c:if test="${tmb > pacienteDTO.plan.caloriasDiarias}">
+				<span>Calorías perdidas por día: ${caloriasPGPorDia}</span>
+				<br>
+				</c:if>
+				<c:if test="${tmb < pacienteDTO.plan.caloriasDiarias}">
+				<span>Calorías Ganadas por día: ${caloriasPGPorDia}</span>
+				<br>
+				</c:if>
+				<span>Días objetivo: ${diasObjetivo}</span>
+			</div>
+			
 			</div>
 		
 			</div>

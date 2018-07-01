@@ -25,34 +25,48 @@
 		
 		<div class = "main container">
 		
-		<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+		<div id="table" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
 			
-			<h2>Plan seleccionado: </h2>
-			
-			<h3> ${plan.nombre}</h3> 
-			<p>Intensidad: ${plan.intensidad}</p>
-			<p>${plan.caloriasDiarias} KiloCalorias diarias</p>
+			<h3> ${plan.nombre}</h3>
+			<h4>Intensidad: ${plan.intensidad } ${plan.caloriasDiarias } Kcal. diarias</h4> 
 
-			<span>${plan.listaComidasPorDia}</span>
-		
-			<c:if test="${pacienteDTO.aptoHipertenso}" >
-				<span>Apto Hipertensión</span>
-			</c:if>
-			<c:if test="${pacienteDTO.aptoCeliaco}" >
-				<span>Apto celiaquía</span>
-			</c:if>
-			<c:if test="${pacienteDTO.intensidad}" >
-				<span>${pacienteDTO.intensidad}</span>
-			</c:if>
-			<span></span>
-			<br>
-			<br>
-			
-			<br>
-			
+        <table id="acrylic">
+            <thead>
+                <tr>
+                    <th>Comida</th>
+                    <th>Alimentos</th>      
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Desayuno</td>
+                    <td>${plan.desayuno }</td>
+                </tr>
+                <tr>
+                    <td>Media mañana</td>
+                    <td>${plan.colacion1}</td>
+                </tr>
+                <tr>
+                    <td>Almuerzo</td>
+                    <td>${plan.almuerzo}</td>
+                </tr>
+                <tr>
+                    <td>Merienda</td>
+                    <td>${plan.merienda}</td>
+                </tr>
+                <tr>
+                    <td>Media tarde</td>
+                    <td>${plan.colacion2}</td>
+                </tr>
+                <tr>
+                    <td>Cena</td>
+                    <td>${plan.cena}</td>
+                </tr>
+            </tbody>
+        </table>
+		</div>
 	  	    
-	  	    </div>
-	  	   </div>
+	  </div>
 		
 		<jsp:include page="footer.jsp"></jsp:include>
 		

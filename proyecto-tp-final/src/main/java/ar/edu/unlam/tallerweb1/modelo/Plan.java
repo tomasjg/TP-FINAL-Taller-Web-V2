@@ -24,6 +24,14 @@ public class Plan {
 	@Column(columnDefinition = "LONGTEXT")
 	private String listaComidasPorDia; // Por ahora. Esto despues se va a borrar y reemplazar por el listado de arriba
 	
+	private String desayuno;
+	private String colacion1;
+	private String almuerzo;
+	private String merienda;
+	private String colacion2;
+	private String cena;
+	
+	
 	public Long getId() {
 		return id;
 	}
@@ -83,6 +91,42 @@ public class Plan {
 	}
 	public void setListaComidasPorDia(String listaComidasPorDia) {
 		this.listaComidasPorDia = listaComidasPorDia;
+	}
+	public String getDesayuno() {
+		return desayuno;
+	}
+	public void setDesayuno(String desayuno) {
+		this.desayuno = desayuno;
+	}
+	public String getColacion1() {
+		return colacion1;
+	}
+	public void setColacion1(String colacion1) {
+		this.colacion1 = colacion1;
+	}
+	public String getAlmuerzo() {
+		return almuerzo;
+	}
+	public void setAlmuerzo(String almuerzo) {
+		this.almuerzo = almuerzo;
+	}
+	public String getMerienda() {
+		return merienda;
+	}
+	public void setMerienda(String merienda) {
+		this.merienda = merienda;
+	}
+	public String getColacion2() {
+		return colacion2;
+	}
+	public void setColacion2(String colacion2) {
+		this.colacion2 = colacion2;
+	}
+	public String getCena() {
+		return cena;
+	}
+	public void setCena(String cena) {
+		this.cena = cena;
 	}
 	
 	

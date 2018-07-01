@@ -56,13 +56,13 @@
 					<form:radiobutton path="plan.id" value="${item.id}"/> ${item.nombre} - ${item.caloriasDiarias} calorías diarias <br>
 				</c:forEach>
 			
-				<br><b>Plan Recomendado:</b>
-				<!--
+				<%--Plan Recomendado:</b>
+				
 				<form:radiobutton path="plan.id" value="${planSugerido.id}" checked="checked"/> ${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
-				-->  
+				  
 				${planSugerido.nombre} - ${planSugerido.caloriasDiarias} calorías diarias <br>
 				
-				<br>
+				<br> --%>
 				
 				<form:input type="hidden" path="paciente.peso" value="${paciente.peso}"/>
 				<form:input type="hidden" path="paciente.altura" value="${paciente.altura}"/>
@@ -70,7 +70,7 @@
 				<form:input type="hidden" path="paciente.edad" value="${paciente.edad}"/>
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 				
-				<br>
+				<br><br>
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Ver Plan</button>
 	  	    </form:form>
 	  	    
