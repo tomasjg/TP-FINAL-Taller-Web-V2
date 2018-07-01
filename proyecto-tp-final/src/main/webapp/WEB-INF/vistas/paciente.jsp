@@ -17,16 +17,22 @@
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
                  <ul class="">
+                    <li><a class="btn active white" href="home">Inicio</a></li>
+                    <li><a href="#">Elegir Plan Nutricional</a></li>
+                    <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                </ul>
+            </nav>
+		</header>
+		<div class = "main container">	
+			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<nav>
+                 <ul class="">
                     <li><a class="btn active white" href="#">PACIENTE</a></li>
                     <li><a href="#">EXCLUSIONES</a></li>
                     <li><a href="#">PLANES</a></li>
                     <li><a href="#">TU PLAN</a></li>
                 </ul>
             </nav>
-		</header>
-		<div class = "main container">	
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				
 				<form:form action="exclusiones" method="POST" modelAttribute="pacienteDTO">
 				<form:label path="paciente.altura">Altura</form:label>
 				<form:input path="paciente.altura" id="altura" type="number" class="form-control" required="required" placeholder="Exprese su altura en centimetros" min="150"/>

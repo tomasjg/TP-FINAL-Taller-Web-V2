@@ -25,5 +25,9 @@ public class ServicioLoginImpl implements ServicioLogin {
 	public Usuario consultarUsuario (Usuario usuario) {
 		return servicioLoginDao.consultarUsuario(usuario);
 	}
+	@Override
+	public boolean crearUsuario (Usuario usuario) {
+		return servicioLoginDao.crearUsuario(usuario);
+	}
 
 }

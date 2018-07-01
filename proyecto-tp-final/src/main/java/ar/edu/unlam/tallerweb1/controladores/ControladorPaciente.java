@@ -26,7 +26,7 @@ public class ControladorPaciente {
 	@Inject
 	private ServicioPacientes ServicioPacientes;
 	
-	@RequestMapping(path = "/", method = RequestMethod.GET)
+	@RequestMapping(path = "/paciente", method = RequestMethod.GET)
 	public ModelAndView irAPaciente() {
 		ModelMap model = new ModelMap();
 		PacienteDTO pacienteDTO = new PacienteDTO();

@@ -48,6 +48,7 @@ public class ControladorLogin {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			request.getSession().setAttribute("EMAIL", usuarioBuscado.getEmail());
 			return new ModelAndView("redirect:/home");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
@@ -63,10 +64,16 @@ public class ControladorLogin {
 	}
 
 	// Escucha la url /, y redirige a la URL /login, es lo mismo que si se invoca la url /login directamente.
-	/*@RequestMapping(path = "/", method = RequestMethod.GET)
+	@RequestMapping(path = "/", method = RequestMethod.GET)
 	public ModelAndView inicio() {
+		//esta es una cuenta dummy para facilitar las pruebas
+		Usuario usuario = new Usuario();
+		usuario.setEmail("root@root.com");
+		usuario.setPassword("");
+		servicioLogin.crearUsuario(usuario);
+		
 		return new ModelAndView("redirect:/login");
-	}*/
+	}
 	
 	// Este metodo escucha la URL localhost:8080/NOMBRE_APP/registrarUsuario si la misma es invocada por metodo http GET
 	@RequestMapping(path ="/registrarusuario", method = RequestMethod.GET)
@@ -92,9 +99,15 @@ public class ControladorLogin {
 		if (usuario != null) {
 			// invoca el método crearUsuario del servicio
 			// SE COMENTA PORQUE TODAVIA NO ESTA CREADO EL SERVICIO
-			//servicioLogin.crearUsuario(usuario);
-			model.put("usuario", usuario);
-			return new ModelAndView("usuariocreado", model);
+			if(servicioLogin.crearUsuario(usuario)){
+				model.put("usuario", usuario);
+				return new ModelAndView("login", model);
+			}
+			else {
+				model.put("error", "El E-mail Ingresado ya esta Registrado. Por Favor ingrese otro E-mail");
+				return new ModelAndView("registrarusuario", model);
+			}
+			
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
 			model.put("error", "Usuario o clave incorrecta");
