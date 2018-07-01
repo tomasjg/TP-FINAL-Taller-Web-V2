@@ -8,6 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.Plan;
 
 @Repository("pacienteDao")
 public class PacienteDaoImpl implements PacienteDao{

@@ -16,18 +16,35 @@
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
                  <ul class="">
-                    <li><a href="#">PACIENTE</a></li>
-                    <li><a class="btn active white" href="#">EXCLUSIONES</a></li>
-                    <li><a href="#">PLANES</a></li>
-                    <li><a href="#">TU PLAN</a></li>
+                    <li><a class="btn active white" href="home">Inicio</a></li>
+                    <li><a href="#">Elegir Plan Nutricional</a></li>
+                    <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
                 </ul>
             </nav>
 		</header>
 		<div class = "main container">	
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+				<!-- Stepper -->
+				<div class="steps-form-2">
+				    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></label><br>PACIENTE
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2-selected" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-check" aria-hidden="true"></i></label><br>EXCLUSIONES
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i></label><br>PLANES
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></i></label><br>TU PLAN
+				        </div>
+				    </div>
+				</div>
 			
 			<form:form action="planes" method="POST" modelAttribute="pacienteDTO">
 			
+				<form:input type="hidden" path="paciente.nombre" value="${paciente.nombre}"/>
 				<form:input type="hidden" path="paciente.peso" value="${paciente.peso}"/>
 				<form:input type="hidden" path="paciente.altura" value="${paciente.altura}"/>
 				<form:input type="hidden" path="paciente.sexo" value="${paciente.sexo}"/>

@@ -1,6 +1,5 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -137,4 +136,23 @@ public class ControladorPaciente {
 		
 		return new ModelAndView("final", model);
 	}
+	
+	
+	@RequestMapping(path = "/finalizarRegistro", method = RequestMethod.POST)
+	public ModelAndView finalizarRegistro(@ModelAttribute("pacienteDTO") PacienteDTO pacienteDTO, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		Plan planElegido = ServicioPacientes.consultarPlan(pacienteDTO.getPlan().getId());
+		Paciente paciente = pacienteDTO.getPaciente();
+		
+		
+		paciente.setPlanAsociado(planElegido);
+		
+		// Llama al servicio que inserta el paciente en la BD
+		ServicioPacientes.registrarPaciente(pacienteDTO.getPaciente());
+		
+		
+		return new ModelAndView("/home", model);
+	}
+	
 }

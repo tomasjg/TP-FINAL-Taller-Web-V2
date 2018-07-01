@@ -141,7 +141,7 @@ public class PlanDaoImpl implements PlanDao {
 
 		final Session session = sessionFactory.getCurrentSession();
 		
-		session.createSQLQuery("truncate table plan").executeUpdate();
+		session.createSQLQuery("delete from plan").executeUpdate();
 		
 		String dummyPlan="<b>Desayuno:</b><br>"+ 
 				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 

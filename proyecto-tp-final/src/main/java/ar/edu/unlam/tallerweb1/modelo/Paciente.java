@@ -1,9 +1,13 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
+
+import org.hibernate.annotations.Cascade;
 
 @Entity
 public class Paciente {
@@ -17,6 +21,9 @@ public class Paciente {
 	private String sexo;
 	private int edad;
 	private int ejercicio;
+	
+	@OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
+	private Plan planAsociado;
 		
 	public Paciente() {
 	}
@@ -69,10 +76,18 @@ public class Paciente {
 		this.ejercicio = ejercicio;
 	}
 	
+	public Plan getPlanAsociado() {
+		return planAsociado;
+	}
+
+	public void setPlanAsociado(Plan planAsociado) {
+		this.planAsociado = planAsociado;
+	}
+
 	public Double calcularImc(){
 		Formula formula= new Formula();
 		return formula.calcularIMC(this.peso, this.altura);
 	}
-	
+
 	
 }

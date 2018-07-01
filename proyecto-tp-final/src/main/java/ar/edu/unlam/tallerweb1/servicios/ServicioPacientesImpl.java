@@ -1,17 +1,15 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
 
-import org.hibernate.Criteria;
-import org.hibernate.Session;
-import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import ar.edu.unlam.tallerweb1.dao.PacienteDao;
 import ar.edu.unlam.tallerweb1.dao.PlanDao;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Plan;
 
@@ -21,6 +19,9 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 
 	@Inject
 	private PlanDao planDao;
+	
+	@Inject
+	private PacienteDao pacienteDao;
 
 	@Override
 	public Plan consultarPlan (Long id) {
@@ -37,7 +38,13 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 		return planDao.obtenerPlanesFiltrados(intensidad, aptoCeliaco, aptoHipertenso, sinCarne, sinLacteos);
 	}
 	
+	@Override
 	public Plan generarPlanSugerido(PacienteDTO pacienteDTO) {
 		return planDao.generarPlanSugerido(pacienteDTO);
+	}
+	
+	@Override
+	public void registrarPaciente(Paciente paciente){
+		pacienteDao.savePacienteInBd(paciente);
 	}
 }

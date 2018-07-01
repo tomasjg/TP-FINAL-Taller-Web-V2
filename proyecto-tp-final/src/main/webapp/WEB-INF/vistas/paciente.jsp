@@ -25,14 +25,23 @@
 		</header>
 		<div class = "main container">	
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
-				<nav>
-                 <ul class="">
-                    <li><a class="btn active white" href="#">PACIENTE</a></li>
-                    <li><a href="#">EXCLUSIONES</a></li>
-                    <li><a href="#">PLANES</a></li>
-                    <li><a href="#">TU PLAN</a></li>
-                </ul>
-            </nav>
+				<!-- Stepper -->
+				<div class="steps-form-2">
+				    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2-selected" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-user" aria-hidden="true"></i></label><br>PACIENTE
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-check" aria-hidden="true"></i></label><br>EXCLUSIONES
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-cutlery" aria-hidden="true"></i></label><br>PLANES
+				        </div>
+				        <div class="steps-step-2">
+				            <label class="btn-circle-2" data-toggle="tooltip" data-placement="top"><i class="glyphicon glyphicon-sort-by-attributes-alt" aria-hidden="true"></i></label><br>TU PLAN
+				        </div>
+				    </div>
+				</div>
 				<form:form action="exclusiones" method="POST" modelAttribute="pacienteDTO">
 				<form:label path="paciente.altura">Altura</form:label>
 				<form:input path="paciente.altura" id="altura" type="number" class="form-control" required="required" placeholder="Exprese su altura en centimetros" min="150"/>

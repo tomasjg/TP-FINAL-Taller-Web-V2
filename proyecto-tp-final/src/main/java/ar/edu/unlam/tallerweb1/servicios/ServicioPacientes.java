@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.List;
 
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Plan;
 
@@ -15,5 +16,7 @@ public interface ServicioPacientes {
 	List<Plan> obtenerPlanesFiltrados(String intensidad, boolean aptoCeliaco, boolean aptoHipertenso, boolean sinCarne, boolean sinLacteos);
 
 	Plan generarPlanSugerido(PacienteDTO pacienteDTO);
+	
+	void registrarPaciente(Paciente paciente);
 
 }
