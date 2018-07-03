@@ -10,7 +10,7 @@
 	</head>
 	<body>
 		<div class = "container">
-			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+			<div id="loginbox" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
 				<%--Definicion de un form asociado a la accion /crear-usuario por POST. Se indica ademas que el model attribute se--%>
 				<%--debe referenciar con el nombre usuario, spring mapea los elementos de la vista con los atributos de dicho objeto--%>
 					<%--para eso debe coincidir el valor del elemento path de cada input con el nombre de un atributo del objeto --%>
@@ -19,11 +19,19 @@
 					<hr class="colorgraph"><br>
 
 					<%--Elementos de entrada de datos, el elemento path debe indicar en que atributo del objeto usuario se guardan los datos ingresados--%>
-					Email: <form:input path="email" id="email" type="email" class="form-control" />
+					Nombre: <form:input path="nombre" id="nombre" type="text" class="form-control" required="required"/>
+					Apellido: <form:input path="apellido" id="apellido" type="text" class="form-control" required="required"/>
+					Fecha de Nacimiento: <form:input path="fechaNacimiento" id="fechaNacimiento" type="date" class="form-control" required="required"/>
+					<br>
+					Sexo:	<form:radiobutton path="sexo" id="sexoH" value="Hombre" checked="checked"/> Hombre
+							<form:radiobutton path="sexo" id="sexoM" value="Mujer"/> Mujer
+					<br>
+					<br>
+					Email: <form:input path="email" id="email" type="email" class="form-control" required="required"/>
 					Password: <form:input path="password" type="password" id="password" class="form-control"/>
 					Rol: <form:input path="rol" type="text" id="rol" class="form-control"/>
-					
-					<button class="btn btn-lg btn-primary btn-block" Type="Submit"/>Registrar</button>
+					<br>
+					<button class="btn btn-lg btn-primary btn-block" Type="Submit">Registrar</button>
 				</form:form>
 
 				<%--Bloque que es visible si el elemento error no está vacío	--%>

@@ -45,8 +45,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		}
 		else {
 			Usuario nuevo = new Usuario();
-			nuevo.setEmail(usuario.getEmail());
-			nuevo.setPassword(usuario.getPassword());
+			nuevo=usuario;
 			session.save(nuevo);
 			return true;
 		}

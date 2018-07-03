@@ -20,6 +20,10 @@ public class Usuario {
 	private String email;
 	private String password;
 	private String rol;
+	private String nombre;
+	private String apellido;
+	private String sexo;
+	private String fechaNacimiento;
 	
 	public Long getId() {
 		return id;
@@ -47,4 +51,30 @@ public class Usuario {
 	public void setRol(String rol) {
 		this.rol = rol;
 	}
+	public String getNombre() {
+		return nombre;
+	}
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
+	}
+	public String getApellido() {
+		return apellido;
+	}
+	public void setApellido(String apellido) {
+		this.apellido = apellido;
+	}
+	public String getSexo() {
+		return sexo;
+	}
+	public void setSexo(String sexo) {
+		this.sexo = sexo;
+	}
+	public String getFechaNacimiento() {
+		return fechaNacimiento;
+	}
+	public void setFechaNacimiento(String fechaNacimiento) {
+		this.fechaNacimiento = fechaNacimiento;
+	}
+	
+	
 }
