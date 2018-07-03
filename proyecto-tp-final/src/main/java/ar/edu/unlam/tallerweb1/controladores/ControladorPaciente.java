@@ -51,6 +51,8 @@ public class ControladorPaciente {
 	public ModelAndView elegirPlanes(@ModelAttribute("pacienteDTO") PacienteDTO pacienteDTO, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
+		model.put("error", "");
+		
 		String[] alimentosExcluidos = pacienteDTO.getAlimentosExcluidos();
 		String[] enfermedadesPadecidas = pacienteDTO.getEnfermedadesPadecidas();
 		
@@ -72,6 +74,8 @@ public class ControladorPaciente {
 		    	pacienteDTO.setAptoCeliaco(true);
 		    }
 		}
+
+		model.put("pacienteDTO", pacienteDTO);
 		
 		// TO DO: Sacar estas líneas para dummies
 		// Llama al servicio que inserta los planes iniciales hasta que desarrollemos el ABM de planes
@@ -80,8 +84,12 @@ public class ControladorPaciente {
 		List<Plan> planesSugeridos = ServicioPacientes.obtenerPlanesFiltrados(pacienteDTO.getIntensidad(), pacienteDTO.isAptoCeliaco(), 
 				pacienteDTO.isAptoHipertenso(), pacienteDTO.isExcluirCarne(), pacienteDTO.isExcluirLacteos());
 
+		if (planesSugeridos.isEmpty()) {
+			// si no hay planes con las exclusiones elegidas
+			model.put("error", "No hay planes que se adecúen a las opciones escogidas. Por favor, seleccione otras.");
+			return new ModelAndView("exclusiones", model);
+		}
 		model.put("planesSugeridos", planesSugeridos);
-		model.put("pacienteDTO", pacienteDTO);
 		
 		//generar el plan especifico
 		Plan planSugerido=new Plan();

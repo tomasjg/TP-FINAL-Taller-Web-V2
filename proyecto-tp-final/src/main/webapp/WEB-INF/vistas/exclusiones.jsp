@@ -67,6 +67,13 @@
 				<form:checkbox path="enfermedadesPadecidas" value="Celiaquia"/>Celiaqu�a<br>
 				
 				<br>
+				<%--Bloque que es visible si el elemento error no está vacío	--%>
+				<c:if test="${not empty error}">
+			        <span style="color:red;">${error}</span>
+			        <br>
+		        </c:if>
+	            <br>	
+		        
 				<button class="btn btn-lg btn-primary btn-block" Type="Submit">Siguiente</button>
 			
 			</form:form>
