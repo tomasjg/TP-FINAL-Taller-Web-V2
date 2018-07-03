@@ -47,4 +47,9 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 	public void registrarPaciente(Paciente paciente){
 		pacienteDao.savePacienteInBd(paciente);
 	}
+	
+	@Override
+	public Paciente obtenerPaciente(Long id){
+		return pacienteDao.obtenerPaciente(id);
+	}
 }

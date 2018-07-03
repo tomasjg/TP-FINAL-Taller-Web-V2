@@ -1,5 +1,17 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
+import java.util.List;
+import java.util.Locale;
+
 public class Formula {
 
 	public Double calcularIMC(Double peso, Double altura) {
@@ -48,4 +60,49 @@ public class Formula {
 		
 		return resultado;
 	}
+	
+	public List<CompararProgresoDTO> generarListaComparacion(int calorias, List<RegistrarPesoDiarioDTO> pesoRegistrado) {
+		List<CompararProgresoDTO> resultado = new ArrayList<CompararProgresoDTO>();
+		
+		
+		
+		return resultado;
+		
+	}
+	
+	public List<ProgresoPesoIdeal> generarListaPesoIdeal(String fecha, int dias, int peso, Double caloriasPG){
+		
+		List<ProgresoPesoIdeal> resultado = new ArrayList<ProgresoPesoIdeal>();
+		Float calPorDia;
+		String f = fecha;
+		
+		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
+		Calendar c = Calendar.getInstance();
+		try {
+			c.setTime(format.parse(f));
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
+		
+		calPorDia = (float) (caloriasPG / 7);
+		Float p = (float) peso*1000;
+		
+		resultado.add(new ProgresoPesoIdeal(f,p));
+		
+		for(int i = 0;i<dias;i++) {
+			
+			c.add(Calendar.DATE, 1);
+			f = format.format(c.getTime());;
+			p = p - calPorDia;
+			resultado.add(new ProgresoPesoIdeal(f,p));
+		}
+		
+		/*for(ProgresoPesoIdeal res : resultado){
+			System.out.println("Fecha: "+res.getFecha()+" Peso: "+res.getPeso());
+		}*/
+		
+		return resultado;
+	}
+	
 }

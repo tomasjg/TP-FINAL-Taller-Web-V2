@@ -27,7 +27,7 @@
 		<div class = "main container">
 		<form:form action="finalizarRegistro" method="POST" modelAttribute="pacienteDTO">
 			
-			<div id="stepperbox"  class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2" style="margin-top:50px;">
+			<div id="stepperbox"  class="mainbox" style="margin-top:50px;">
 				<!-- Stepper -->
 				<div class="steps-form-2">
 				    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
@@ -47,8 +47,8 @@
 				</div>
 			</div>
 				
-			<div id="loginbox"  class="mainbox col-md-8 col-sm-1 col-sm-offset-2">
-				<h3>Plan escogido: </h3>
+			<div id="loginbox"  class="mainbox">
+				<h2>Plan escogido: </h2>
 				
 				<div id="table" class="mainbox col-md-12">
 					
@@ -90,14 +90,15 @@
 			            </tbody>
 			        </table>
 				</div>
-
+<br>
 <%-- 			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
 				<br> --%>
 				
 	
 				
-				<div class="mainbox col-md-8 ">
-					<h3>Tiempo estimado en cumplir objetivo</h3>
+				<div class="mainbox">
+				<br>
+					<h2>Tiempo estimado en cumplir objetivo</h2>
 					<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 					<c:set var="contador" value="${peso}" />  
 					<div class="chartjs-wrapper">
@@ -128,34 +129,35 @@
 					</div>
 				</div>
 			
-				<div class="mainbox col-md-4 ">
-					<h3>Datos del Paciente</h3>
+				<div class="mainbox">
 					<br>
-					<span>Peso: ${peso}</span>
+					<h2>Datos del Paciente</h2>
 					<br>
-					<span data-toggle="tooltip" data-placement="top" title="La tasa metabólica basal (TMB) es el cálculo de las calorías mínimas que precisa una persona para realizar sus funciones orgánicas cada día.">
-						TMB: ${tmb}
+					<span>Peso inicial del Paciente: ${peso} Kg.</span>
+					<br>
+					<span>TMB: ${tmb} Calorias.</span><span class="badge badge-secondary" data-toggle="tooltip" data-placement="top" title="La tasa metabólica basal (TMB) es el cálculo de las calorías mínimas que precisa una persona para realizar sus funciones orgánicas cada día.">
+					?
 					</span>
 					<br>
-					<span>Peso ideal: ${pesoIdeal}</span>
+					<span>Peso Objetivo: ${pesoIdeal} Kg.</span>
 					<br>
 					<c:if test="${peso > pesoIdeal}">
-					<span>Peso a perder: ${pesoAPerderOGanar}</span>
+					<span>Peso a Perder: ${pesoAPerderOGanar} Kg.</span>
 					<br>
 					</c:if>
 					<c:if test="${peso < pesoIdeal}">
-					<span>Peso a Ganar: ${pesoAPerderOGanar}</span>
+					<span>Peso a Ganar: ${pesoAPerderOGanar} Kg.</span>
 					<br>
 					</c:if>
 					<c:if test="${tmb > pacienteDTO.plan.caloriasDiarias}">
-					<span>Calorías perdidas por día: ${caloriasPGPorDia}</span>
+					<span>Calorías perdidas por día: ${caloriasPGPorDia} Calorias.</span>
 					<br>
 					</c:if>
 					<c:if test="${tmb < pacienteDTO.plan.caloriasDiarias}">
-					<span>Calorías Ganadas por día: ${caloriasPGPorDia}</span>
+					<span>Calorías Ganadas por día: ${caloriasPGPorDia} Calorias.</span>
 					<br>
 					</c:if>
-					<span>Días objetivo: ${diasObjetivo}</span>
+					<span>Días objetivo: ${diasObjetivo} Dias</span>
 				</div>
 				
 				
@@ -167,11 +169,12 @@
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 				<form:input type="hidden" path="plan.id" value="${pacienteDTO.plan.id}"/>
 				
-				<div class="mainbox col-md-6 col-sm-offset-3" >
+				<div class="mainbox" >
 					<button class="btn btn-lg btn-primary btn-block col-md-4" Type="Submit" style="margin: 30px 0px 20px">Confirmar Registro</button>
 				</div>
+				</form:form>
 			</div>
-		</form:form>
+		
 	
 		</div>
 	

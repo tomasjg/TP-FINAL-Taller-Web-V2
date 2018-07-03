@@ -8,7 +8,7 @@ import org.hibernate.criterion.Restrictions;
 import org.springframework.stereotype.Repository;
 
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
-import ar.edu.unlam.tallerweb1.modelo.Plan;
+
 
 @Repository("pacienteDao")
 public class PacienteDaoImpl implements PacienteDao{
@@ -44,6 +44,18 @@ public class PacienteDaoImpl implements PacienteDao{
 		.uniqueResult();
 		
 		return paciente.getPeso();	
+	}
+	
+	@Override
+	public Paciente obtenerPaciente(Long id){
+
+		final Session session = sessionFactory.getCurrentSession();
+		Paciente resultado = (Paciente) session.createCriteria(Paciente.class)
+											.add(Restrictions.eq("idUsuario", id))
+											.uniqueResult();
+
+		return resultado;
+		
 	}
 	
 }

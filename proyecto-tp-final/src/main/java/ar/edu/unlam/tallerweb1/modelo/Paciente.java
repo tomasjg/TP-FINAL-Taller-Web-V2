@@ -15,15 +15,16 @@ public class Paciente {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	private Long idUsuario;
 	private String nombre;
 	private Double peso;
 	private Double altura;
 	private String sexo;
 	private int edad;
 	private int ejercicio;
+	private String fecha_inicio;
 	
-	@OneToOne(cascade = CascadeType.ALL, orphanRemoval=true)
-	private Plan planAsociado;
+	private Long planAsociado_id;
 		
 	public Paciente() {
 	}
@@ -32,7 +33,15 @@ public class Paciente {
 		this.peso = peso;
 		this.altura = altura;
 	}
-	
+		
+	public Long getIdUsuario() {
+		return idUsuario;
+	}
+
+	public void setIdUsuario(Long idUsuario) {
+		this.idUsuario = idUsuario;
+	}
+
 	public Long getId() {
 		return id;
 	}
@@ -76,17 +85,25 @@ public class Paciente {
 		this.ejercicio = ejercicio;
 	}
 	
-	public Plan getPlanAsociado() {
-		return planAsociado;
-	}
-
-	public void setPlanAsociado(Plan planAsociado) {
-		this.planAsociado = planAsociado;
-	}
-
 	public Double calcularImc(){
 		Formula formula= new Formula();
 		return formula.calcularIMC(this.peso, this.altura);
+	}
+
+	public Long getPlanAsociado_id() {
+		return planAsociado_id;
+	}
+
+	public void setPlanAsociado_id(Long planAsociado_id) {
+		this.planAsociado_id = planAsociado_id;
+	}
+
+	public String getFecha_inicio() {
+		return fecha_inicio;
+	}
+
+	public void setFecha_inicio(String fecha_inicio) {
+		this.fecha_inicio = fecha_inicio;
 	}
 
 	

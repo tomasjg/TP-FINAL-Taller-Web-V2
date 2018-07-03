@@ -10,4 +10,6 @@ public interface PacienteDao {
 	Long savePacienteInBd (Paciente paciente);
 //	este metodo retorna el peso de un paciente desde la BD
 	Double getPesoPaciente(Long id);
+	
+	Paciente obtenerPaciente(Long id);
 }

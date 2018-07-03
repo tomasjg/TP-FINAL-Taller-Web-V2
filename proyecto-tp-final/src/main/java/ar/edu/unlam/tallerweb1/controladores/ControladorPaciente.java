@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -141,12 +144,14 @@ public class ControladorPaciente {
 	@RequestMapping(path = "/finalizarRegistro", method = RequestMethod.POST)
 	public ModelAndView finalizarRegistro(@ModelAttribute("pacienteDTO") PacienteDTO pacienteDTO, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
-		
-		Plan planElegido = ServicioPacientes.consultarPlan(pacienteDTO.getPlan().getId());
+		Date fecha = new Date();
+		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
+		String f = dateFormat.format(fecha);
+				
 		Paciente paciente = pacienteDTO.getPaciente();
-		
-		
-		paciente.setPlanAsociado(planElegido);
+		paciente.setFecha_inicio(f);		
+		paciente.setPlanAsociado_id(pacienteDTO.getPlan().getId());
+		paciente.setIdUsuario((Long) request.getSession().getAttribute("ID"));
 		
 		// Llama al servicio que inserta el paciente en la BD
 		ServicioPacientes.registrarPaciente(pacienteDTO.getPaciente());
