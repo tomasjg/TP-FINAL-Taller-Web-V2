@@ -61,20 +61,35 @@ public class Formula {
 		return resultado;
 	}
 	
-	public List<CompararProgresoDTO> generarListaComparacion(int calorias, List<RegistrarPesoDiarioDTO> pesoRegistrado) {
+	public List<CompararProgresoDTO> generarListaComparacion(List<RegistrarPesoDiarioDTO> pesoRegistrado,List<ProgresoPesoIdeal> pesoIdeal) {
 		List<CompararProgresoDTO> resultado = new ArrayList<CompararProgresoDTO>();
 		
+		for(ProgresoPesoIdeal ideal : pesoIdeal){
+			
+			for(RegistrarPesoDiarioDTO registrado : pesoRegistrado){
+				
+				if(ideal.getFecha().equals(registrado.getFecha())) {
+					
+				resultado.add(new CompararProgresoDTO(ideal.getFecha(),ideal.getPeso(),registrado.getPeso()));	
+					
+				}			
+			}	
+		}
 		
+		/*for(CompararProgresoDTO comparar : resultado){
+			System.out.println("Fecha: "+comparar.getFecha()+" PesoIdeal: "+comparar.getPesoIdeal()+" PesoRegistrado: "+comparar.getPesoRegistrado());
+		}*/
 		
 		return resultado;
 		
 	}
 	
-	public List<ProgresoPesoIdeal> generarListaPesoIdeal(String fecha, int dias, int peso, Double caloriasPG){
+	public List<ProgresoPesoIdeal> generarListaPesoIdeal(String fecha, int dias, Double peso, Double caloriasPG){
 		
 		List<ProgresoPesoIdeal> resultado = new ArrayList<ProgresoPesoIdeal>();
 		Float calPorDia;
 		String f = fecha;
+		Float pesoFinal;
 		
 		SimpleDateFormat format = new SimpleDateFormat("dd/MM/yyyy");
 		Calendar c = Calendar.getInstance();
@@ -86,7 +101,7 @@ public class Formula {
 		}		
 		
 		calPorDia = (float) (caloriasPG / 7);
-		Float p = (float) peso*1000;
+		Float p = (float)(peso*1000);
 		
 		resultado.add(new ProgresoPesoIdeal(f,p));
 		
@@ -95,7 +110,8 @@ public class Formula {
 			c.add(Calendar.DATE, 1);
 			f = format.format(c.getTime());;
 			p = p - calPorDia;
-			resultado.add(new ProgresoPesoIdeal(f,p));
+			pesoFinal = p/1000;
+			resultado.add(new ProgresoPesoIdeal(f,pesoFinal));
 		}
 		
 		/*for(ProgresoPesoIdeal res : resultado){

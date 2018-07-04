@@ -15,6 +15,14 @@
 		
 		<header class="header container">
 			<h1 class="logo">Registrar Peso Diario</h1>
+			<nav>
+                 <ul class="container">
+                    <li><a href="home">Inicio</a></li>
+                    <li><a href="paciente">Elegir Plan Nutricional</a></li>
+                    <li><a class="btn active white"  href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a href="progresoPaciente">Ver Progreso</a></li>
+                </ul>
+            </nav>
 		</header>
 		<div class = "main container">	
 			<div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">

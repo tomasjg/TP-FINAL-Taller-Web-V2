@@ -1,5 +1,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -16,15 +17,37 @@
 		<header class="header container">
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
-                 <ul class="">
-                    <li><a class="btn active white" href="#">Inicio</a></li>
+                 <ul class="container">
+                    <li><a  href="home">Inicio</a></li>
                     <li><a href="paciente">Elegir Plan Nutricional</a></li>
                     <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a class="btn active white" href="#">Ver Progreso</a></li>
                 </ul>
             </nav>
 		</header>
-		<div class = "main container">	
-			Bienvenido ${EMAIL} ! Elige en el Menu.
+		<div class = "main container">
+		
+		<table class="table">
+			  <thead>
+			    <tr>
+			      <th scope="col">Fecha</th>
+			      <th scope="col">Peso Ideal</th>
+			      <th scope="col">Peso Registrado por Usuario</th>
+			    </tr>
+			  </thead>
+			  <tbody>
+			  <c:forEach items="${Lista}" var="listado">
+			    <tr>
+			      <td>${listado.fecha}</td>
+			      <td><fmt:formatNumber type="number" maxFractionDigits="2" value="${listado.pesoIdeal}"/></td>
+			      <td>${listado.pesoRegistrado}</td>
+			    </tr>
+			  </c:forEach> 
+			  </tbody>
+		</table>
+			
+
+			
 		</div>
 		
 		<jsp:include page="footer.jsp"></jsp:include>

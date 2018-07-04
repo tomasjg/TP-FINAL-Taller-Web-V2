@@ -65,4 +65,23 @@ public class ControladorRegistrarPesoDiario {
 			
 	}
 	
+	@RequestMapping(path = "/cargarDatosRoot", method = RequestMethod.GET)
+	public ModelAndView cargarDatosRoot(HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("05/07/2018",(float)80,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("09/07/2018",(float)74,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("10/07/2018",(float)73,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("11/07/2018",(float)73,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("12/07/2018",(float)72,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("13/07/2018",(float)71,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("14/07/2018",(float)70,(long)1));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("15/07/2018",(float)70,(long)1));
+		
+		return new ModelAndView("home", model);
+	}
+	
 }

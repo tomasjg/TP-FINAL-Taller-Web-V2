@@ -14,10 +14,11 @@
 		<header class="header container">
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
-                 <ul class="">
-                    <li><a class="btn active white" href="home">Inicio</a></li>
-                    <li><a href="#">Elegir Plan Nutricional</a></li>
+                 <ul class="container">
+                    <li><a href="home">Inicio</a></li>
+                    <li><a class="btn active white" href="#">Elegir Plan Nutricional</a></li>
                     <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a href="progresoPaciente">Ver Progreso</a></li>
                 </ul>
             </nav>
 		</header>

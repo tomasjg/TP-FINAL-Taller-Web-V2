@@ -1,6 +1,8 @@
 package ar.edu.unlam.tallerweb1.dao;
 
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -34,4 +36,13 @@ public class RegistrarPesoDiarioDaoImpl implements RegistrarPesoDiarioDao{
 		
 	}
 	
+	@Override
+	public List<RegistrarPesoDiarioDTO> ObtenerRegistros(Long id) {
+		final Session session = sessionFactory.getCurrentSession();
+		List<RegistrarPesoDiarioDTO> resultado = 	session.createCriteria(RegistrarPesoDiarioDTO.class)
+													.add(Restrictions.eq("idPaciente", id))
+													.list();
+		
+		return resultado;
+	}
 }

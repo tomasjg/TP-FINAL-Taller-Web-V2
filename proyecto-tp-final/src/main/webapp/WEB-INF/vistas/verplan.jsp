@@ -14,7 +14,7 @@
 		<header class="header container">
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
-                 <ul class="">
+                 <ul class="container">
                     <li><a href="#">PACIENTE</a></li>
                     <li><a href="#">EXCLUSIONES</a></li>
                     <li><a class="btn active white" href="#">PLANES</a></li>

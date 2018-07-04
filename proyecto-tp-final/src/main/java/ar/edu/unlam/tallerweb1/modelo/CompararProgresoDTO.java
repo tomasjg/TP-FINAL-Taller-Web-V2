@@ -5,6 +5,16 @@ public class CompararProgresoDTO {
 	private Float pesoIdeal;
 	private Float pesoRegistrado;
 	
+	public CompararProgresoDTO() {
+		
+	}
+	
+	public CompararProgresoDTO(String fecha, Float pesoIdeal, Float pesoRegistrado) {
+		this.fecha = fecha;
+		this.pesoIdeal = pesoIdeal;
+		this.pesoRegistrado = pesoRegistrado;
+	}
+
 	public String getFecha() {
 		return fecha;
 	}

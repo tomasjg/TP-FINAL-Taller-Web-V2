@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.servicios;
 
 import java.util.Date;
+import java.util.List;
 
 import javax.inject.Inject;
 
@@ -24,5 +25,10 @@ public class ServicioRegistrarPesoDiarioImpl implements ServicioRegistrarPesoDia
 	@Override
 	public void RegistrarPesoDiario(RegistrarPesoDiarioDTO registrarPesoDiarioDTO) {
 		registrarPesoDiarioDao.RegistrarPesoDiario(registrarPesoDiarioDTO);
+	}
+	
+	@Override
+	public List<RegistrarPesoDiarioDTO> ObtenerRegistros(Long id) {
+		return registrarPesoDiarioDao.ObtenerRegistros(id);
 	}
 }

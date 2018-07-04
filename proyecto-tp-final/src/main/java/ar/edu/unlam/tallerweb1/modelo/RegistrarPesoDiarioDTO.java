@@ -16,6 +16,16 @@ public class RegistrarPesoDiarioDTO {
 	private Float peso;
 	private Long idPaciente;
 
+	public RegistrarPesoDiarioDTO() {
+		
+	}
+	
+	public RegistrarPesoDiarioDTO(String fecha, Float peso, Long idPaciente) {
+		this.fecha = fecha;
+		this.peso = peso;
+		this.idPaciente = idPaciente;
+	}
+	
 public Long getId() {
 		return id;
 	}
