@@ -41,6 +41,7 @@ public class ControladorRegistrarPesoDiario {
 		Long longId = (Long) request.getSession().getAttribute("ID");
 		int id = longId.intValue();
 		
+		registrarPesoDiarioDTO.setPeso((float)registrarPesoDiarioDTO.getPeso());
 		
 		Date fecha = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
@@ -69,7 +70,6 @@ public class ControladorRegistrarPesoDiario {
 	public ModelAndView cargarDatosRoot(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("05/07/2018",(float)80,(long)1));
 		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,(long)1));
 		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,(long)1));
 		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,(long)1));

@@ -101,9 +101,12 @@ public class Formula {
 		}		
 		
 		calPorDia = (float) (caloriasPG / 7);
-		Float p = (float)(peso*1000);
+		
+		Float p = (float)(peso*1);
 		
 		resultado.add(new ProgresoPesoIdeal(f,p));
+		
+		p = (float)(peso*1000);
 		
 		for(int i = 0;i<dias;i++) {
 			

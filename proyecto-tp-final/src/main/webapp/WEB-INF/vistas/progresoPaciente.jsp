@@ -27,20 +27,27 @@
 		</header>
 		<div class = "main container">
 		
-		<table class="table">
+		<table class="table container">
 			  <thead>
 			    <tr>
 			      <th scope="col">Fecha</th>
 			      <th scope="col">Peso Ideal</th>
 			      <th scope="col">Peso Registrado por Usuario</th>
+			      <th scope="col">Evaluacion</th>
 			    </tr>
 			  </thead>
 			  <tbody>
 			  <c:forEach items="${Lista}" var="listado">
 			    <tr>
 			      <td>${listado.fecha}</td>
-			      <td><fmt:formatNumber type="number" maxFractionDigits="2" value="${listado.pesoIdeal}"/></td>
-			      <td>${listado.pesoRegistrado}</td>
+			      <td><fmt:formatNumber type="number" maxFractionDigits="2" value="${listado.pesoIdeal}"/> kgs.</td>
+			      <td>${listado.pesoRegistrado} kgs.</td>
+			      <c:if test="${listado.pesoIdeal >= listado.pesoRegistrado}">
+			      <td style="background-color:#A3D444;">- <fmt:formatNumber type="number" maxFractionDigits="2" value="${listado.pesoIdeal - listado.pesoRegistrado}"/> kgs.</td> 
+		       	  </c:if>	
+		       	  <c:if test="${listado.pesoIdeal < listado.pesoRegistrado}">
+			      <td style="background-color:#F04A58;">+ <fmt:formatNumber type="number" maxFractionDigits="2" value="${listado.pesoRegistrado - listado.pesoIdeal}"/> kgs.</td> 
+		       	  </c:if>	
 			    </tr>
 			  </c:forEach> 
 			  </tbody>
