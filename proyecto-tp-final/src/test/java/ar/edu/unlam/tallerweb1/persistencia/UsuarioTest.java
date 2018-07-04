@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.persistencia;
 import static org.assertj.core.api.Assertions.*;
+import static org.junit.Assert.assertEquals;
 
 import java.text.ParseException;
 
@@ -42,8 +43,21 @@ public class UsuarioTest extends SpringTest{
         
         Usuario resultado=dao.consultarUsuario(usuario);
        
-        assertThat(resultado).isNotNull();
-       
-       
+        assertThat(resultado).isNotNull();     
     }
+    
+    @Test @Rollback @Transactional
+    public void probarQueSeCalculeLaEdad() {
+    	
+    	Usuario usuario = new Usuario();
+    	//fecha de nacimiento en formato "dd/MM/yyyy"
+    	usuario.setFechaNacimiento("24/11/1980");
+    	
+    	System.out.println(usuario.getFechaNacimiento());
+    	int edad=usuario.getEdad();
+    	System.out.println(edad);
+    	
+    	assertEquals(edad, 37);
+    }
+    
 }

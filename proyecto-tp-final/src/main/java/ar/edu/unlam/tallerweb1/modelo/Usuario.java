@@ -1,5 +1,8 @@
 package ar.edu.unlam.tallerweb1.modelo;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -76,5 +79,28 @@ public class Usuario {
 		this.fechaNacimiento = fechaNacimiento;
 	}
 	
+	public int getEdad() {
+
+		String sDate=this.fechaNacimiento;
+		
+		//Convertimos el String en LocalDate
+		LocalDate fechaNac = LocalDate.parse(sDate, DateTimeFormatter.ofPattern("dd/MM/yyyy") );
+		//Obtenemos la fecha actual y en formato LocalDate
+		LocalDate fechaHoy = LocalDate.now();
+		
+		 //ahora comparar los años de las dos fechas y asi obtener la edad
+		
+	    int diffYear = fechaHoy.getYear() - fechaNac.getYear();
+	    int diffMonth = fechaHoy.getMonthValue() -fechaHoy.getMonthValue();
+	    int diffDay = fechaHoy.getDayOfMonth() - fechaNac.getDayOfMonth();
+	    
+	    // Si está en ese año pero todavía no los ha cumplido se resta 1
+	    if (diffMonth < 0 || (diffMonth == 0 && diffDay < 0)) {
+	        diffYear = diffYear - 1;
+	    }
+		
+		 return diffYear;
+
+	}
 	
 }
