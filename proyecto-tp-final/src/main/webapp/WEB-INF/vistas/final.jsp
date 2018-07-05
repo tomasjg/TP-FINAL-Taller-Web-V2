@@ -11,16 +11,18 @@
 	    <link rel="stylesheet" href="css/estilos.css">
 	    <script src="<c:url value="js/Chart.min.js" />"></script>
 	</head>
+	
 	<body>
 		
 		<header class="header container">
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
                  <ul class="container">
-                    <li><a href="home">Inicio</a></li>
-                    <li><a class="btn active white" href="#">Elegir Plan Nutricional</a></li>
-                    <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
-                    <li><a href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn" href="home">Inicio</a></li>
+                    <li><a class="btn active white" href="paciente">Elegir Plan Nutricional</a></li>
+                    <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn" href="verplan">Ver Plan</a></li>
                 </ul>
             </nav>
 		</header>
@@ -28,7 +30,8 @@
 		<div class = "main container">
 		<form:form action="finalizarRegistro" method="POST" modelAttribute="pacienteDTO">
 			
-			<div id="stepperbox"  class="mainbox" style="margin-top:50px;">
+			<div id="stepperbox"  class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2" style="margin-top:50px;">
+			<!--<div id="stepperbox"  class="mainbox" style="margin-top:50px;">-->
 				<!-- Stepper -->
 				<div class="steps-form-2">
 				    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
@@ -48,12 +51,13 @@
 				</div>
 			</div>
 				
-			<div id="loginbox"  class="mainbox">
-				<h2>Plan escogido: </h2>
+			<div id="plan"  class="mainbox col-md-8 col-sm-1 col-sm-offset-2">	
+			<!--<div id="loginbox"  class="mainbox">-->
+			
 				
 				<div id="table" class="mainbox col-md-12">
 					
-					<h3> ${pacienteDTO.plan.nombre}</h3>
+					<h2>Plan escogido: ${pacienteDTO.plan.nombre}</h2>
 					<h4>Intensidad: ${pacienteDTO.plan.intensidad } ${pacienteDTO.plan.caloriasDiarias } Kcal. diarias</h4> 
 		
 			        <table id="acrylic">
@@ -91,15 +95,14 @@
 			            </tbody>
 			        </table>
 				</div>
+				</div>
 <br>
-<%-- 			<span>Listado de comidas:<br> ${pacienteDTO.plan.listaComidasPorDia}</span>
-				<br> --%>
 				
 	
-				
-				<div class="mainbox">
+				<div id="grafico"  class="mainbox col-md-8 col-sm-1 col-sm-offset-2">	
+				<!--  <div class="mainbox">-->
 				<br>
-					<h2>Tiempo estimado en cumplir objetivo</h2>
+					<h2 class="center">Tiempo estimado en cumplir objetivo</h2>
 					<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
 					<c:set var="contador" value="${peso}" />  
 					<div class="chartjs-wrapper">
@@ -129,8 +132,10 @@
 							</script>
 					</div>
 				</div>
-			
-				<div class="mainbox">
+				
+				<div class="row">
+				<div   class="mainbox col-md-3 col-sm-1 col-sm-offset-3">	
+				<!--  <div class="mainbox">-->
 					<br>
 					<h2>Datos del Paciente</h2>
 					<br>
@@ -170,12 +175,12 @@
 				<form:input type="hidden" path="paciente.ejercicio" value="${paciente.ejercicio}"/>
 				<form:input type="hidden" path="plan.id" value="${pacienteDTO.plan.id}"/>
 				
-				<div class="mainbox" >
-					<button class="btn btn-lg btn-primary btn-block col-md-4" Type="Submit" style="margin: 30px 0px 20px">Confirmar Registro</button>
-				</div>
-				</form:form>
+			<div   class="mainbox col-md-4 col-sm-1 col-sm-offset-1" style="margin-top:8em;">
+				<button class="btn btn-lg btn-primary " Type="Submit">Confirmar Registro</button>
 			</div>
-		
+			</form:form>
+			
+			</div>
 	
 		</div>
 	
