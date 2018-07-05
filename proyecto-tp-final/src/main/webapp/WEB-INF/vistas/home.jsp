@@ -17,16 +17,26 @@
             <nav>
                  <ul class="container">
                     <li><a class="btn active white" href="home">Inicio</a></li>
-                    <li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>
-                    <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
-                    <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
-                    <li><a class="btn" href="verplan">Ver Plan</a></li>
+                    <c:if test="${ID==1}" >
+                    	<li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>  
+                    	<li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    </c:if>
+                   		<li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                    <c:if test="${ID!=1}" >
+                    	<li><a class="btn" href="verplan">Ver Plan</a></li>
+                    </c:if>
                 </ul>
             </nav>
 		</header>
 		
 		<div class = "main container">	
-			Bienvenido ${APELLIDO} ! Elige en el Menu.<br>Su paciente es:${APELLIDO_PACIENTE}, ${NOMBRE_PACIENTE}
+			Bienvenido ${APELLIDO} ! Elige en el Menu.<br>
+			<c:if test="${ID==1}" >
+			Su paciente es:${NOMBRE_PACIENTE} ${APELLIDO_PACIENTE}
+			</c:if>
+			<br>id usuario logeado${ID}
+			<br>id usuario del paciente ${ID_PACIENTE}
+			<br>id del paciente 
 			<%--Bloque que es visible si el elemento error no está vacío	--%>
 				<c:if test="${not empty error}">
 			        <h4>
