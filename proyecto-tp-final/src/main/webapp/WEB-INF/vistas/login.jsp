@@ -42,7 +42,7 @@
 			        <br>
 		        </c:if>	
 		        
-		        <a href="registrarusuario">¿No tienes una cuenta? Registrate Aqui...</a>
+		       <!--  <a href="registrarusuario">¿No tienes una cuenta? Registrate Aqui...</a> -->
 			</div>
 		</div>
 		</div>

@@ -38,7 +38,7 @@ public class ControladorRegistrarPesoDiario {
 		//tomo la fecha actual junto con el id del usuario y busco si ya existe un registro
 		//cambiar el dummy id por el id del user en session
 		
-		Long longId = (Long) request.getSession().getAttribute("ID");
+		Long longId = (Long) request.getSession().getAttribute("ID_PACIENTE");
 		int id = longId.intValue();
 		
 		registrarPesoDiarioDTO.setPeso((float)registrarPesoDiarioDTO.getPeso());

@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
+import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioLogin;
 
@@ -50,6 +51,7 @@ public class ControladorLogin {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			request.getSession().setAttribute("EMAIL", usuarioBuscado.getEmail());
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
+			request.getSession().setAttribute("APELLIDO", usuarioBuscado.getApellido());
 			return new ModelAndView("redirect:/home");
 		} else {
 			// si el usuario no existe agrega un mensaje de error en el modelo.
@@ -70,6 +72,7 @@ public class ControladorLogin {
 		//esta es una cuenta dummy para facilitar las pruebas
 		Usuario usuario = new Usuario();
 		usuario.setEmail("root@root.com");
+		usuario.setApellido("Dr X");
 		usuario.setPassword("");
 		servicioLogin.crearUsuario(usuario);
 		
@@ -102,7 +105,14 @@ public class ControladorLogin {
 			// SE COMENTA PORQUE TODAVIA NO ESTA CREADO EL SERVICIO
 			if(servicioLogin.crearUsuario(usuario)){
 				model.put("usuario", usuario);
-				return new ModelAndView("login", model);
+				PacienteDTO pacienteDTO = new PacienteDTO();
+				pacienteDTO.setUsuario(usuario);
+				request.getSession().setAttribute("ID_PACIENTE", usuario.getId());
+				request.getSession().setAttribute("APELLIDO_PACIENTE", usuario.getApellido() );
+				request.getSession().setAttribute("NOMBRE_PACIENTE", usuario.getNombre() );
+				//pacienteDTO.setEdad(usuario.getEdad());
+				model.put("pacienteDTO", pacienteDTO);
+				return new ModelAndView("paciente", model);
 			}
 			else {
 				model.put("error", "El E-mail Ingresado ya esta Registrado. Por Favor ingrese otro E-mail");

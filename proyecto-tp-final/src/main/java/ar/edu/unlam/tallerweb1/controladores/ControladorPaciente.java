@@ -157,9 +157,17 @@ public class ControladorPaciente {
 		String f = dateFormat.format(fecha);
 				
 		Paciente paciente = pacienteDTO.getPaciente();
+		
 		paciente.setFecha_inicio(f);		
 		paciente.setPlanAsociado_id(pacienteDTO.getPlan().getId());
-		paciente.setIdUsuario((Long) request.getSession().getAttribute("ID"));
+		
+		//SE CAMBIO ID por ID_PACIENTE
+		paciente.setIdUsuario((Long) request.getSession().getAttribute("ID_PACIENTE"));
+		
+		//seteamos el nombre del paciente
+		String nombrePaciente= (String) request.getSession().getAttribute("NOMBRE_PACIENTE");
+		nombrePaciente+=" "+(String) request.getSession().getAttribute("APELLIDO_PACIENTE");
+		paciente.setNombre(nombrePaciente);
 		
 		// Llama al servicio que inserta el paciente en la BD
 		ServicioPacientes.registrarPaciente(pacienteDTO.getPaciente());

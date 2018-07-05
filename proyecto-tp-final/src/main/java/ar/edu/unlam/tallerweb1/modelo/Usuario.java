@@ -25,7 +25,6 @@ public class Usuario {
 	private String rol;
 	private String nombre;
 	private String apellido;
-	private String sexo;
 	private String fechaNacimiento;
 	
 	public Long getId() {
@@ -65,12 +64,6 @@ public class Usuario {
 	}
 	public void setApellido(String apellido) {
 		this.apellido = apellido;
-	}
-	public String getSexo() {
-		return sexo;
-	}
-	public void setSexo(String sexo) {
-		this.sexo = sexo;
 	}
 	public String getFechaNacimiento() {
 		return fechaNacimiento;

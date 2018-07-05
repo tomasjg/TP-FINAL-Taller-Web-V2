@@ -37,7 +37,7 @@ public class ControladorProgresoPaciente {
 	public ModelAndView verProgresoPaciente(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
-		Long longId = (Long) request.getSession().getAttribute("ID");
+		Long longId = (Long) request.getSession().getAttribute("ID_PACIENTE");
 		//int id = longId.intValue();
 				
 		Paciente paciente = servicioPacientes.obtenerPaciente(longId);

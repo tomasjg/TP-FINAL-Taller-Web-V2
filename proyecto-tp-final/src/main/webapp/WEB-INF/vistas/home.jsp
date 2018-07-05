@@ -12,20 +12,21 @@
 	<body>
 	
 
-		
 		<header class="header container">
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
                  <ul class="container">
                     <li><a class="btn active white" href="home">Inicio</a></li>
-                    <li><a href="paciente">Elegir Plan Nutricional</a></li>
-                    <li><a href="registrarPesoDiario">Registrar Peso Diario</a></li>
-                    <li><a href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>
+                    <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn" href="verplan">Ver Plan</a></li>
                 </ul>
             </nav>
 		</header>
+		
 		<div class = "main container">	
-			Bienvenido ${EMAIL} ! Elige en el Menu.
+			Bienvenido ${APELLIDO} ! Elige en el Menu.<br>Su paciente es:${APELLIDO_PACIENTE}, ${NOMBRE_PACIENTE}
 			<%--Bloque que es visible si el elemento error no está vacío	--%>
 				<c:if test="${not empty error}">
 			        <h4>

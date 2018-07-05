@@ -15,14 +15,15 @@
 			<h1 class="logo">Control Nutricional</h1>
             <nav>
                  <ul class="container">
-                    <li><a href="#">PACIENTE</a></li>
-                    <li><a href="#">EXCLUSIONES</a></li>
-                    <li><a class="btn active white" href="#">PLANES</a></li>
-                    <li><a href="#">TU PLAN</a></li>
+                    <li><a class="btn" href="home">Inicio</a></li>
+                    <li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>
+                    <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
+                    <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn active white" href="verplan">Ver Plan</a></li>
                 </ul>
             </nav>
 		</header>
-		
+		id${plan.id }
 		<div class = "main container">
 		
 		<div id="table" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">

@@ -22,11 +22,9 @@
                     <li><a class="btn active white" href="paciente">Elegir Plan Nutricional</a></li>
                     <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
                     <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
-                    <li><a class="btn" href="verplan">Ver Plan</a></li>
                 </ul>
             </nav>
 		</header>
-		
 		<div class = "main container">
 		<form:form action="finalizarRegistro" method="POST" modelAttribute="pacienteDTO">
 			

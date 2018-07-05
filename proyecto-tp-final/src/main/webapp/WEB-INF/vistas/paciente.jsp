@@ -55,7 +55,7 @@
 				<form:radiobutton path="paciente.sexo" value="Mujer"/> Mujer
 				<br><br>				
 				<form:label path="paciente.edad">Edad</form:label> 
-				<form:input path="paciente.edad" id="edad" type="number" class="form-control" min="18"/>
+				<form:input path="paciente.edad" id="edad" type="number" class="form-control" min="18" value=""/>
 				<br>   
 				<form:label path="paciente.ejercicio">Ejercicio</form:label>
 				<br> 
@@ -74,6 +74,7 @@
 				Ejercicio Extremo (2 veces al dia; todos los dias de la semana)
 				<form:radiobutton path="paciente.ejercicio" value="5"/>
 				<br>
+				<form:input type="hidden" path="usuario.id" value="${usuario.id}"/>
 				<br>
 			<button class="btn btn-lg btn-primary btn-block" Type="Submit">Siguiente</button>
 			</form:form>

@@ -2,6 +2,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 
 	public class PacienteDTO {
 	private Paciente paciente;
+	private Usuario usuario;
 	private Plan plan;
 	private String intensidad;
 	private boolean excluirCarne;
@@ -11,6 +12,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 	private String [] alimentosExcluidos;
 	private String [] enfermedadesPadecidas;
 	private Double IMC;
+	private int edad;
 	
 	public Double getIMC() {
 		Double altura=(this.getPaciente().getAltura() /100);
@@ -77,6 +79,18 @@ package ar.edu.unlam.tallerweb1.modelo;
 	}
 	public void setEnfermedadesPadecidas(String[] enfermedadesPadecidas) {
 		this.enfermedadesPadecidas = enfermedadesPadecidas;
+	}
+	public Usuario getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
+	}
+	public int getEdad() {
+		return edad;
+	}
+	public void setEdad(int edad) {
+		this.edad = edad;
 	}
 
 
