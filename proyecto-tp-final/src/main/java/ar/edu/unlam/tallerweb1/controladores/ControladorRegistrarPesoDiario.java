@@ -13,6 +13,8 @@ import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.RegistrarPesoDiarioDTO;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistrarPesoDiario;
@@ -70,16 +72,20 @@ public class ControladorRegistrarPesoDiario {
 	public ModelAndView cargarDatosRoot(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("09/07/2018",(float)74,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("10/07/2018",(float)73,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("11/07/2018",(float)73,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("12/07/2018",(float)72,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("13/07/2018",(float)71,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("14/07/2018",(float)70,(long)1));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("15/07/2018",(float)70,(long)1));
+		//obtenemos el id del Usuario directamente de la session
+		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
+		Long idPaciente = (Long) attr.getRequest().getSession().getAttribute("ID_PACIENTE");
+		
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("09/07/2018",(float)74,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("10/07/2018",(float)73,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("11/07/2018",(float)73,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("12/07/2018",(float)72,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("13/07/2018",(float)71,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("14/07/2018",(float)70,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("15/07/2018",(float)70,idPaciente));
 		
 		return new ModelAndView("home", model);
 	}

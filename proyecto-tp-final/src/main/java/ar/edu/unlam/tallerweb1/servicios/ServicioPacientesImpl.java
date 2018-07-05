@@ -52,4 +52,9 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 	public Paciente obtenerPaciente(Long id){
 		return pacienteDao.obtenerPaciente(id);
 	}
+	
+	@Override
+	public Long getIdPlanByIdPaciente(Long id){
+		return pacienteDao.getIdPlanByIdPaciente(id);
+	}
 }

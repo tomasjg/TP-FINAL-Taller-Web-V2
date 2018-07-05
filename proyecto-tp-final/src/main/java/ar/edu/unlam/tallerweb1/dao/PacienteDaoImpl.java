@@ -58,4 +58,14 @@ public class PacienteDaoImpl implements PacienteDao{
 		
 	}
 	
+	public Long getIdPlanByIdPaciente(Long id) {
+		
+		Session session = sessionFactory.getCurrentSession();
+		Paciente paciente = (Paciente) session.createCriteria(Paciente.class)
+							.add(Restrictions.eqOrIsNull("idUsuario", id))
+							.uniqueResult();
+		
+		return paciente.getPlanAsociado_id();
+	}
+	
 }

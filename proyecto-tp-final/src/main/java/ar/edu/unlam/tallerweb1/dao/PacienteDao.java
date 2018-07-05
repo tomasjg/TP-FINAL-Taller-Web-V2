@@ -12,4 +12,6 @@ public interface PacienteDao {
 	Double getPesoPaciente(Long id);
 	
 	Paciente obtenerPaciente(Long id);
+	
+	Long getIdPlanByIdPaciente(Long id);
 }

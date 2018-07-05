@@ -23,7 +23,7 @@
                 </ul>
             </nav>
 		</header>
-		id${plan.id }
+		
 		<div class = "main container">
 		
 		<div id="table" class="mainbox col-md-8 col-md-offset-2 col-sm-8 col-sm-offset-2">
