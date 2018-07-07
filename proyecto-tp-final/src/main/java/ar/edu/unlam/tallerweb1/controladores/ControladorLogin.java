@@ -74,6 +74,7 @@ public class ControladorLogin {
 		usuario.setEmail("root@root.com");
 		usuario.setApellido("Dr X");
 		usuario.setPassword("");
+		usuario.setRol("medico");
 		servicioLogin.crearUsuario(usuario);
 		
 		return new ModelAndView("redirect:/login");
@@ -107,7 +108,7 @@ public class ControladorLogin {
 				model.put("usuario", usuario);
 				PacienteDTO pacienteDTO = new PacienteDTO();
 				pacienteDTO.setUsuario(usuario);
-				request.getSession().setAttribute("ID_PACIENTE", usuario.getId());
+				request.getSession().setAttribute("idUsuario", usuario.getId());
 				request.getSession().setAttribute("APELLIDO_PACIENTE", usuario.getApellido() );
 				request.getSession().setAttribute("NOMBRE_PACIENTE", usuario.getNombre() );
 				//pacienteDTO.setEdad(usuario.getEdad());

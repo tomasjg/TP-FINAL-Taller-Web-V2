@@ -45,6 +45,7 @@
 			</div>
 			
 			<h3>Estos son los planes sugeridos: </h3>
+			<p>Peso Actual:${pacienteDTO.paciente.peso} Peso ideal: ${pacienteDTO.pesoIdeal}</p>
 			
 			<c:if test="${pacienteDTO.excluirCarne}" >
 				<span>Sin carnes</span>
@@ -62,15 +63,13 @@
 				<span>${pacienteDTO.intensidad}</span>
 			</c:if>
 			<span></span>
-			<br>
-			<br>
-			
-			<br>
+			<br><br>
+
 			<form:form action="final" method="POST" modelAttribute="pacienteDTO">
 			
 			  
 				<c:forEach items="${planesSugeridos}" var = "item" >
-					<form:radiobutton path="plan.id" value="${item.id}"/> ${item.nombre} - ${item.caloriasDiarias} calorías diarias <br>
+					<form:radiobutton path="plan.id" value="${item.id}" required="required"/> ${item.nombre} - ${item.caloriasDiarias} calorías diarias <br>
 				</c:forEach>
 			
 				<%--Plan Recomendado:</b>

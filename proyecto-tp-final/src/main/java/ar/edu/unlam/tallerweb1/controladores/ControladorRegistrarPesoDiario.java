@@ -40,7 +40,7 @@ public class ControladorRegistrarPesoDiario {
 		//tomo la fecha actual junto con el id del usuario y busco si ya existe un registro
 		//cambiar el dummy id por el id del user en session
 		
-		Long longId = (Long) request.getSession().getAttribute("ID_PACIENTE");
+		Long longId = (Long) request.getSession().getAttribute("idUsuario");
 		int id = longId.intValue();
 		
 		registrarPesoDiarioDTO.setPeso((float)registrarPesoDiarioDTO.getPeso());
@@ -74,18 +74,18 @@ public class ControladorRegistrarPesoDiario {
 		
 		//obtenemos el id del Usuario directamente de la session
 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-		Long idPaciente = (Long) attr.getRequest().getSession().getAttribute("ID_PACIENTE");
+		Long idUsuario = (Long) attr.getRequest().getSession().getAttribute("idUsuario");
 		
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("09/07/2018",(float)74,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("10/07/2018",(float)73,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("11/07/2018",(float)73,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("12/07/2018",(float)72,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("13/07/2018",(float)71,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("14/07/2018",(float)70,idPaciente));
-		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("15/07/2018",(float)70,idPaciente));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("06/07/2018",(float)77,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("07/07/2018",(float)77,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("08/07/2018",(float)75,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("09/07/2018",(float)74,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("10/07/2018",(float)73,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("11/07/2018",(float)73,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("12/07/2018",(float)72,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("13/07/2018",(float)71,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("14/07/2018",(float)70,idUsuario));
+		servicioRegistrarPesoDiario.RegistrarPesoDiario(new RegistrarPesoDiarioDTO("15/07/2018",(float)70,idUsuario));
 		
 		return new ModelAndView("home", model);
 	}

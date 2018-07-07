@@ -35,8 +35,8 @@
 			Su paciente es:${NOMBRE_PACIENTE} ${APELLIDO_PACIENTE}
 			</c:if>
 			<br>id usuario logeado${ID}
-			<br>id usuario del paciente ${ID_PACIENTE}
-			<br>id del paciente 
+			<br>id usuario del paciente ${idUsuario}
+	 
 			<%--Bloque que es visible si el elemento error no está vacío	--%>
 				<c:if test="${not empty error}">
 			        <h4>

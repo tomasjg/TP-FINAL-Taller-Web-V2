@@ -53,19 +53,6 @@ public class PlanDaoImpl implements PlanDao {
 
 		final Session session = sessionFactory.getCurrentSession();
 		
-		String dummyPlan="<b>Desayuno:</b><br>"+ 
-				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 
-				"<b>Media mañana:</b><br>" +
-				"Yogur descremado con frutillas.<br>" +  
-				"<b>Almuerzo:</b><br>" +
-				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.<br>" +
-				"<b>Media tarde:</b><br>" +
-				"Gaseosa light + 2 bay biscuits.<br>" +
-				"<b>Merienda:</b><br>" +
-				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
-				"<b>Cena:</b><br>" +
-				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
-		
 		Plan planBase = new Plan();
 		planBase.setNombre("Plan ");
 		//seteamos las calorias del plan segun la intensidad
@@ -120,17 +107,22 @@ public class PlanDaoImpl implements PlanDao {
 			planBase.setNombre(planBase.getNombre()+"(bajo en sodio)");
 		}
 		if(pacienteDTO.isAptoCeliaco()==true && pacienteDTO.isAptoHipertenso()==false ) {
-			planBase.setNombre(planBase.getNombre()+"(sin glutem)");
+			planBase.setNombre(planBase.getNombre()+"(sin gluten)");
 		}
 		if(pacienteDTO.isAptoCeliaco()==true && pacienteDTO.isAptoHipertenso()==true ) {
-			planBase.setNombre(planBase.getNombre()+"(bajo en sodio sin glutem)");
+			planBase.setNombre(planBase.getNombre()+"(bajo en sodio sin gluten)");
 		}
 
 		
-		//seteamos el plan Dummy
-		planBase.setListaComidasPorDia(dummyPlan);
+		//seteamos el plan
+//		planBase.setDesayuno(desayuno);
+//		planBase.setColacion1(colacion1);
+//		planBase.setAlmuerzo(almuerzo);
+//		planBase.setMerienda(merienda);
+//		planBase.setColacion2(colacion2);
+//		planBase.setCena(cena);
 		
-		session.save(planBase);
+		//session.save(planBase);
 		
 		return planBase;
 	}
@@ -141,20 +133,20 @@ public class PlanDaoImpl implements PlanDao {
 
 		final Session session = sessionFactory.getCurrentSession();
 		
-		session.createSQLQuery("delete from plan").executeUpdate();
-		
-		String dummyPlan="<b>Desayuno:</b><br>"+ 
-				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 
-				"<b>Media mañana:</b><br>" +
-				"Yogur descremado con frutillas.<br>" +  
-				"<b>Almuerzo:</b><br>" +
-				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.<br>" +
-				"<b>Media tarde:</b><br>" +
-				"Gaseosa light + 2 bay biscuits.<br>" +
-				"<b>Merienda:</b><br>" +
-				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
-				"<b>Cena:</b><br>" +
-				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
+//		session.createSQLQuery("delete from plan").executeUpdate();
+//		
+//		String dummyPlan="<b>Desayuno:</b><br>"+ 
+//				"Infusión con ½ taza de leche descremada + 3 tostadas de gluten con ricota descremada + 1 huevo revuelto.<br>" + 
+//				"<b>Media mañana:</b><br>" +
+//				"Yogur descremado con frutillas.<br>" +  
+//				"<b>Almuerzo:</b><br>" +
+//				"Ensalada de lentejas, tomate, lechuga, pepino, cebolla y ají + 2 brochetes de banana, naranja y kiwi.<br>" +
+//				"<b>Media tarde:</b><br>" +
+//				"Gaseosa light + 2 bay biscuits.<br>" +
+//				"<b>Merienda:</b><br>" +
+//				"Infusión con ½ taza de leche descremada + 2 tostadas de pan integral con queso untable descremado.<br>" +
+//				"<b>Cena:</b><br>" +
+//				"Bife de lomo grillado + ensalada de lechuga, zanahoria, apio y clara de huevo duro + postre de leche light.<br>";
 		
 		String desayuno="1 yogur descremado con cereal<br>1 fruta";
 		String colacion1="1 vaso grande de jugo light<br>1 yogur descremado";
@@ -163,94 +155,169 @@ public class PlanDaoImpl implements PlanDao {
 		String colacion2="1 vaso de licuado de durazno con leche descremada<br>1 figazza árabe de salvado con queso fresco descremado y tomate (tostada, tipo pizzeta)";
 		String cena="1 plato de ensalada<br>1 plato de verduras cocidas a elección<br>1 milanesa de soja<br>1 postre light";
 
+		//Planes Intensidad Normal (Bajar de Peso)
+		Plan plan0000NB = new Plan();
+		plan0000NB.setNombre("Plan Bajo en grasas y azucares");
+		plan0000NB.setSinCarne(false);
+		plan0000NB.setSinLacteos(false);
+		plan0000NB.setAptoHipertenso(false);
+		plan0000NB.setAptoCeliaco(false);
+		plan0000NB.setCaloriasDiarias(1500);
+		plan0000NB.setIntensidad("Normal");
+		plan0000NB.setDesayuno(desayuno);
+		plan0000NB.setColacion1(colacion1);
+		plan0000NB.setAlmuerzo(almuerzo);
+		plan0000NB.setMerienda(merienda);
+		plan0000NB.setColacion2(colacion2);
+		plan0000NB.setCena(cena);
 		
-		Plan plan0000N = new Plan();
-		plan0000N.setNombre("Plan Bajo en grasas y azucares");
-		plan0000N.setSinCarne(false);
-		plan0000N.setSinLacteos(false);
-		plan0000N.setAptoHipertenso(false);
-		plan0000N.setAptoCeliaco(false);
-		plan0000N.setCaloriasDiarias(1500);
-		plan0000N.setIntensidad("Normal");
-		plan0000N.setListaComidasPorDia(dummyPlan);
-		plan0000N.setDesayuno(desayuno);
-		plan0000N.setColacion1(colacion1);
-		plan0000N.setAlmuerzo(almuerzo);
-		plan0000N.setMerienda(merienda);
-		plan0000N.setColacion2(colacion2);
-		plan0000N.setCena(cena);
 		
+		Plan plan1000NB = new Plan();
+		plan1000NB.setNombre("Plan Lacto-Vegetariano");
+		plan1000NB.setSinCarne(true);
+		plan1000NB.setSinLacteos(false);
+		plan1000NB.setAptoHipertenso(false);
+		plan1000NB.setAptoCeliaco(false);
+		plan1000NB.setCaloriasDiarias(1500);
+		plan1000NB.setIntensidad("Normal");
+		plan1000NB.setDesayuno(desayuno);
+		plan1000NB.setColacion1(colacion1);
+		plan1000NB.setAlmuerzo(almuerzo);
+		plan1000NB.setMerienda(merienda);
+		plan1000NB.setColacion2(colacion2);
+		plan1000NB.setCena(cena);
 		
-		Plan plan1000N = new Plan();
-		plan1000N.setNombre("Plan Lacto-Vegetariano");
-		plan1000N.setSinCarne(true);
-		plan1000N.setSinLacteos(false);
-		plan1000N.setAptoHipertenso(false);
-		plan1000N.setAptoCeliaco(false);
-		plan1000N.setCaloriasDiarias(1500);
-		plan1000N.setIntensidad("Normal");
-		plan1000N.setListaComidasPorDia(dummyPlan);
-		plan1000N.setDesayuno(desayuno);
-		plan1000N.setColacion1(colacion1);
-		plan1000N.setAlmuerzo(almuerzo);
-		plan1000N.setMerienda(merienda);
-		plan1000N.setColacion2(colacion2);
-		plan1000N.setCena(cena);
+		Plan plan1100NB = new Plan();
+		plan1100NB.setNombre("Plan Vegetariano");
+		plan1100NB.setSinCarne(true);
+		plan1100NB.setSinLacteos(true);
+		plan1100NB.setAptoHipertenso(false);
+		plan1100NB.setAptoCeliaco(false);
+		plan1100NB.setCaloriasDiarias(1500);
+		plan1100NB.setIntensidad("Normal");
+		plan1100NB.setDesayuno(desayuno);
+		plan1100NB.setColacion1(colacion1);
+		plan1100NB.setAlmuerzo(almuerzo);
+		plan1100NB.setMerienda(merienda);
+		plan1100NB.setColacion2(colacion2);
+		plan1100NB.setCena(cena);
 		
-		Plan plan1100N = new Plan();
-		plan1100N.setNombre("Plan Vegetariano");
-		plan1100N.setSinCarne(true);
-		plan1100N.setSinLacteos(true);
-		plan1100N.setAptoHipertenso(false);
-		plan1100N.setAptoCeliaco(false);
-		plan1100N.setCaloriasDiarias(1500);
-		plan1100N.setIntensidad("Normal");
-		plan1100N.setListaComidasPorDia(dummyPlan);
-		plan1100N.setDesayuno(desayuno);
-		plan1100N.setColacion1(colacion1);
-		plan1100N.setAlmuerzo(almuerzo);
-		plan1100N.setMerienda(merienda);
-		plan1100N.setColacion2(colacion2);
-		plan1100N.setCena(cena);
+		Plan plan0100NB = new Plan();
+		plan0100NB.setNombre("Plan Intolerante Lactosa");
+		plan0100NB.setSinCarne(false);
+		plan0100NB.setSinLacteos(true);
+		plan0100NB.setAptoHipertenso(false);
+		plan0100NB.setAptoCeliaco(false);
+		plan0100NB.setCaloriasDiarias(1500);
+		plan0100NB.setIntensidad("Normal");
+		plan0100NB.setDesayuno(desayuno);
+		plan0100NB.setColacion1(colacion1);
+		plan0100NB.setAlmuerzo(almuerzo);
+		plan0100NB.setMerienda(merienda);
+		plan0100NB.setColacion2(colacion2);
+		plan0100NB.setCena(cena);
 		
-		Plan plan0100N = new Plan();
-		plan0100N.setNombre("Plan Intolerante Lactosa");
-		plan0100N.setSinCarne(false);
-		plan0100N.setSinLacteos(true);
-		plan0100N.setAptoHipertenso(false);
-		plan0100N.setAptoCeliaco(false);
-		plan0100N.setCaloriasDiarias(1500);
-		plan0100N.setIntensidad("Normal");
-		plan0100N.setListaComidasPorDia(dummyPlan);
-		plan0100N.setDesayuno(desayuno);
-		plan0100N.setColacion1(colacion1);
-		plan0100N.setAlmuerzo(almuerzo);
-		plan0100N.setMerienda(merienda);
-		plan0100N.setColacion2(colacion2);
-		plan0100N.setCena(cena);
+		Plan plan0001NB = new Plan();
+		plan0001NB.setNombre("Plan Sin Gluten");
+		plan0001NB.setSinCarne(false);
+		plan0001NB.setSinLacteos(false);
+		plan0001NB.setAptoHipertenso(false);
+		plan0001NB.setAptoCeliaco(true);
+		plan0001NB.setCaloriasDiarias(1500);
+		plan0001NB.setIntensidad("Normal");
+		plan0001NB.setDesayuno(desayuno);
+		plan0001NB.setColacion1(colacion1);
+		plan0001NB.setAlmuerzo(almuerzo);
+		plan0001NB.setMerienda(merienda);
+		plan0001NB.setColacion2(colacion2);
+		plan0001NB.setCena(cena);
 		
-		Plan plan0100SP = new Plan();
-		plan0100SP.setNombre("Plan Alto en Carbohidratos");
-		plan0100SP.setSinCarne(false);
-		plan0100SP.setSinLacteos(false);
-		plan0100SP.setAptoHipertenso(false);
-		plan0100SP.setAptoCeliaco(false);
-		plan0100SP.setCaloriasDiarias(3000);
-		plan0100SP.setIntensidad("Normal");
-		plan0100SP.setListaComidasPorDia(dummyPlan);
-		plan0100SP.setDesayuno(desayuno);
-		plan0100SP.setColacion1(colacion1);
-		plan0100SP.setAlmuerzo(almuerzo);
-		plan0100SP.setMerienda(merienda);
-		plan0100SP.setColacion2(colacion2);
-		plan0100SP.setCena(cena);
+		Plan plan0010NB = new Plan();
+		plan0010NB.setNombre("Plan Bajo en Sodio");
+		plan0010NB.setSinCarne(false);
+		plan0010NB.setSinLacteos(false);
+		plan0010NB.setAptoHipertenso(true);
+		plan0010NB.setAptoCeliaco(false);
+		plan0010NB.setCaloriasDiarias(1500);
+		plan0010NB.setIntensidad("Normal");
+		plan0010NB.setDesayuno(desayuno);
+		plan0010NB.setColacion1(colacion1);
+		plan0010NB.setAlmuerzo(almuerzo);
+		plan0010NB.setMerienda(merienda);
+		plan0010NB.setColacion2(colacion2);
+		plan0010NB.setCena(cena);
 		
-
-		session.save(plan0000N);
-		session.save(plan0100N);
-		session.save(plan1100N);
-		session.save(plan0100N);
-		session.save(plan0100SP);
+		//Planes Intensiadad Normal (Subir Peso)
+		Plan plan0000NS = new Plan();
+		plan0000NS.setNombre("Plan Alto en Carbohidratos");
+		plan0000NS.setSinCarne(false);
+		plan0000NS.setSinLacteos(false);
+		plan0000NS.setAptoHipertenso(false);
+		plan0000NS.setAptoCeliaco(false);
+		plan0000NS.setCaloriasDiarias(2700);
+		plan0000NS.setIntensidad("Normal");
+		plan0000NS.setDesayuno(desayuno);
+		plan0000NS.setColacion1(colacion1);
+		plan0000NS.setAlmuerzo(almuerzo);
+		plan0000NS.setMerienda(merienda);
+		plan0000NS.setColacion2(colacion2);
+		plan0000NS.setCena(cena);
+		
+		Plan plan1000NS = new Plan();
+		plan1000NS.setNombre("Plan Alto en Carbohidratos Lacto-Vegetariano");
+		plan1000NS.setSinCarne(true);
+		plan1000NS.setSinLacteos(false);
+		plan1000NS.setAptoHipertenso(false);
+		plan1000NS.setAptoCeliaco(false);
+		plan1000NS.setCaloriasDiarias(2700);
+		plan1000NS.setIntensidad("Normal");
+		plan1000NS.setDesayuno(desayuno);
+		plan1000NS.setColacion1(colacion1);
+		plan1000NS.setAlmuerzo(almuerzo);
+		plan1000NS.setMerienda(merienda);
+		plan1000NS.setColacion2(colacion2);
+		plan1000NS.setCena(cena);
+		
+		Plan plan0010NS = new Plan();
+		plan0010NS.setNombre("Plan Alto en Carbohidratos bajo en sodio");
+		plan0010NS.setSinCarne(false);
+		plan0010NS.setSinLacteos(false);
+		plan0010NS.setAptoHipertenso(true);
+		plan0010NS.setAptoCeliaco(false);
+		plan0010NS.setCaloriasDiarias(2700);
+		plan0010NS.setIntensidad("Normal");
+		plan0010NS.setDesayuno(desayuno);
+		plan0010NS.setColacion1(colacion1);
+		plan0010NS.setAlmuerzo(almuerzo);
+		plan0010NS.setMerienda(merienda);
+		plan0010NS.setColacion2(colacion2);
+		plan0010NS.setCena(cena);
+		
+		Plan plan0001NS = new Plan();
+		plan0001NS.setNombre("Plan Alto en Carbohidratos sin Gluten");
+		plan0001NS.setSinCarne(false);
+		plan0001NS.setSinLacteos(false);
+		plan0001NS.setAptoHipertenso(false);
+		plan0001NS.setAptoCeliaco(true);
+		plan0001NS.setCaloriasDiarias(2700);
+		plan0001NS.setIntensidad("Normal");
+		plan0001NS.setDesayuno(desayuno);
+		plan0001NS.setColacion1(colacion1);
+		plan0001NS.setAlmuerzo(almuerzo);
+		plan0001NS.setMerienda(merienda);
+		plan0001NS.setColacion2(colacion2);
+		plan0001NS.setCena(cena);
+	
+		session.save(plan0000NB);
+		session.save(plan1000NB);
+		session.save(plan1100NB);
+		session.save(plan0100NB);
+		session.save(plan0010NB);
+		session.save(plan0001NB);
+		session.save(plan0000NS);
+		session.save(plan1000NS);
+		session.save(plan0001NS);
+		session.save(plan0010NS);
 		
 	}
 	

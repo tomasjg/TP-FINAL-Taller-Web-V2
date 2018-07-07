@@ -12,6 +12,7 @@ package ar.edu.unlam.tallerweb1.modelo;
 	private String [] alimentosExcluidos;
 	private String [] enfermedadesPadecidas;
 	private Double IMC;
+	private Double pesoIdeal;
 	private int edad;
 	
 	public Double getIMC() {
@@ -91,6 +92,12 @@ package ar.edu.unlam.tallerweb1.modelo;
 	}
 	public void setEdad(int edad) {
 		this.edad = edad;
+	}
+	public Double getPesoIdeal() {
+		return pesoIdeal;
+	}
+	public void setPesoIdeal(Double pesoIdeal) {
+		this.pesoIdeal = pesoIdeal;
 	}
 
 

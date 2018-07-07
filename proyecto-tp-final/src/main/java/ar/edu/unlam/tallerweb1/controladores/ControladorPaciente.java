@@ -42,6 +42,7 @@ public class ControladorPaciente {
 	@RequestMapping(path = "/exclusiones", method = RequestMethod.POST)
 	public ModelAndView elegirExclusiones(@ModelAttribute("pacienteDTO") PacienteDTO pacienteDTO, HttpServletRequest request) {
 		ModelMap model = new ModelMap();
+			
 		model.put("pacienteDTO", pacienteDTO);
 		
 		return new ModelAndView("exclusiones", model);
@@ -74,12 +75,21 @@ public class ControladorPaciente {
 		    	pacienteDTO.setAptoCeliaco(true);
 		    }
 		}
+		
+		Paciente paciente = pacienteDTO.getPaciente();
+		
+		Double altura = paciente.getAltura();
+		String sexo = paciente.getSexo();
+		
+		Formula formula = new Formula();
+		Double pesoIdeal = formula.calcularPesoIdeal(altura, sexo);
+		pacienteDTO.setPesoIdeal(pesoIdeal);
 
 		model.put("pacienteDTO", pacienteDTO);
 		
 		// TO DO: Sacar estas líneas para dummies
 		// Llama al servicio que inserta los planes iniciales hasta que desarrollemos el ABM de planes
-		ServicioPacientes.insertarPlanesIniciales();
+		//ServicioPacientes.insertarPlanesIniciales();
 		
 		List<Plan> planesSugeridos = ServicioPacientes.obtenerPlanesFiltrados(pacienteDTO.getIntensidad(), pacienteDTO.isAptoCeliaco(), 
 				pacienteDTO.isAptoHipertenso(), pacienteDTO.isExcluirCarne(), pacienteDTO.isExcluirLacteos());
@@ -90,11 +100,6 @@ public class ControladorPaciente {
 			return new ModelAndView("exclusiones", model);
 		}
 		model.put("planesSugeridos", planesSugeridos);
-		
-		//generar el plan especifico
-		Plan planSugerido=new Plan();
-		planSugerido=ServicioPacientes.generarPlanSugerido(pacienteDTO);
-		model.put("planSugerido", planSugerido);
 		
 		return new ModelAndView("planes", model);
 	}
@@ -161,8 +166,8 @@ public class ControladorPaciente {
 		paciente.setFecha_inicio(f);		
 		paciente.setPlanAsociado_id(pacienteDTO.getPlan().getId());
 		
-		//SE CAMBIO ID por ID_PACIENTE
-		paciente.setIdUsuario((Long) request.getSession().getAttribute("ID_PACIENTE"));
+		//SE CAMBIO ID por idUsuario
+		paciente.setIdUsuario((Long) request.getSession().getAttribute("idUsuario"));
 		
 		//seteamos el nombre del paciente
 		String nombrePaciente= (String) request.getSession().getAttribute("NOMBRE_PACIENTE");

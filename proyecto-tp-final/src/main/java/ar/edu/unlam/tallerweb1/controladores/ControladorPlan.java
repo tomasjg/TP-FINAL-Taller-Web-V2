@@ -1,6 +1,7 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
 import javax.inject.Inject;
+import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -24,6 +25,9 @@ public class ControladorPlan {
 	@Inject
 	private ServicioPacientes servicioPacientes;
 	
+	@Inject
+	private ServicioPacientes ServicioPacientes;
+	
 	@RequestMapping(path = "/verplan", method = RequestMethod.GET)
 	public ModelAndView irAveplan() {
 		ModelMap model = new ModelMap();
@@ -31,7 +35,7 @@ public class ControladorPlan {
 
 		//obtenemos el id del Usuario directamente de la session
 		ServletRequestAttributes attr = (ServletRequestAttributes) RequestContextHolder.currentRequestAttributes();
-		Long idPaciente = (Long) attr.getRequest().getSession().getAttribute("ID_PACIENTE");
+		Long idPaciente = (Long) attr.getRequest().getSession().getAttribute("idUsuario");
 		
 		//con el id del paciente obtenemos el id del plan
 		Long idPlan=servicioPacientes.getIdPlanByIdPaciente(idPaciente);
@@ -42,6 +46,15 @@ public class ControladorPlan {
 		model.put("plan",plan);
 		
 		return new ModelAndView("verplan", model);
+	}
+	
+	@RequestMapping(path = "/cargarPlanes", method = RequestMethod.GET)
+	public ModelAndView cargarDatosRoot(HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		ServicioPacientes.insertarPlanesIniciales();
+	
+		return new ModelAndView("home", model);
 	}
 	
 }
