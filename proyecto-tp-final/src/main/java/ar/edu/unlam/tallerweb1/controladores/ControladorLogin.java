@@ -49,6 +49,12 @@ public class ControladorLogin {
 		Usuario usuarioBuscado = servicioLogin.consultarUsuario(usuario);
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
+			
+			if(usuarioBuscado.getRol().equals("paciente") ){
+				request.getSession().setAttribute("idUsuario", usuarioBuscado.getId() );
+				request.getSession().setAttribute("APELLIDO_PACIENTE", usuario.getApellido() );
+				request.getSession().setAttribute("NOMBRE_PACIENTE", usuario.getNombre() );
+			}
 			request.getSession().setAttribute("EMAIL", usuarioBuscado.getEmail());
 			request.getSession().setAttribute("ID", usuarioBuscado.getId());
 			request.getSession().setAttribute("APELLIDO", usuarioBuscado.getApellido());

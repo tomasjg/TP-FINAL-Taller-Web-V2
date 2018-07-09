@@ -46,7 +46,7 @@ public class UsuarioDaoImpl implements UsuarioDao {
 		else {
 			Usuario nuevo = new Usuario();
 			nuevo=usuario;
-			session.save(nuevo);
+			session.save(usuario);
 			return true;
 		}
 		

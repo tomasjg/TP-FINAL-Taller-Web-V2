@@ -17,12 +17,12 @@
             <nav>
                  <ul class="container">
                     <li><a class="btn active white" href="home">Inicio</a></li>
-                    <c:if test="${ID==1}" >
+                    <c:if test="${ROL=='medico'}" >
                     	<li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>  
                     	<li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
                     </c:if>
                    		<li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
-                    <c:if test="${ID!=1}" >
+                    <c:if test="${ROL!='medico'}" >
                     	<li><a class="btn" href="verplan">Ver Plan</a></li>
                     </c:if>
                 </ul>
@@ -31,7 +31,7 @@
 		
 		<div class = "main container">	
 			Bienvenido ${APELLIDO} ! Elige en el Menu.<br>
-			<c:if test="${ID==1}" >
+			<c:if test="${ROL=='medico'}" >
 			Su paciente es:${NOMBRE_PACIENTE} ${APELLIDO_PACIENTE}
 			</c:if>
 			<br>id usuario logeado${ID}
