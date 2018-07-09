@@ -1,5 +1,6 @@
 package ar.edu.unlam.tallerweb1.controladores;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.inject.Inject;
@@ -7,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
@@ -14,8 +16,11 @@ import org.springframework.web.servlet.ModelAndView;
 import ar.edu.unlam.tallerweb1.modelo.CompararProgresoDTO;
 import ar.edu.unlam.tallerweb1.modelo.Formula;
 import ar.edu.unlam.tallerweb1.modelo.Paciente;
+import ar.edu.unlam.tallerweb1.modelo.PacienteDTO;
 import ar.edu.unlam.tallerweb1.modelo.Plan;
 import ar.edu.unlam.tallerweb1.modelo.ProgresoPesoIdeal;
+import ar.edu.unlam.tallerweb1.modelo.RegistrarPesoDiarioDTO;
+import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPacientes;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistrarPesoDiario;
 
@@ -33,14 +38,36 @@ public class ControladorProgresoPaciente {
 	@Inject
 	private ServicioRegistrarPesoDiario servicioRegistrarPeso;
 	
-	@RequestMapping(path = "/progresoPaciente", method = RequestMethod.GET)
-	public ModelAndView verProgresoPaciente(HttpServletRequest request) {
+	@RequestMapping(path = "/progresoSeleccionarPaciente", method = RequestMethod.GET)
+	public ModelAndView verProgresoSeleccionarPaciente(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
-		Long longId = (Long) request.getSession().getAttribute("idUsuario");
+		Paciente paciente = new Paciente();
+		model.put("paciente", paciente);
+		
+
+		// servicio para obtener listado de pacientes
+		List<Paciente> listadoPacientes = servicioPacientes.obtenerListadoPacientes();
+		
+		if(listadoPacientes.isEmpty()) {
+			String error = "No hay pacientes cargados en el sistema.";
+			model.put("error", error);
+		}
+		
+		
+		model.put("listadoPacientes", listadoPacientes);
+		
+		return new ModelAndView("progresoSeleccionarPaciente", model);
+	}
+	
+	@RequestMapping(path = "/progresoPaciente", method = RequestMethod.POST)
+	public ModelAndView verProgresoPaciente(@ModelAttribute("idUsuario") Long idUsuario, HttpServletRequest request) {
+		ModelMap model = new ModelMap();
+		
+		//Long longId = idUsuario;
 		//int id = longId.intValue();
 				
-		Paciente paciente = servicioPacientes.obtenerPaciente(longId);
+		Paciente paciente = servicioPacientes.obtenerPaciente(idUsuario);
 		
 		if(paciente == null) {
 			
@@ -71,7 +98,7 @@ public class ControladorProgresoPaciente {
 		
 		List<ProgresoPesoIdeal> listaPesoIdeal = formula.generarListaPesoIdeal(paciente.getFecha_inicio(), diasObjetivo, paciente.getPeso(), caloriasPGPorDia);
 
-		List<CompararProgresoDTO> listaComparacion = formula.generarListaComparacion(servicioRegistrarPeso.ObtenerRegistros(longId), listaPesoIdeal);
+		List<CompararProgresoDTO> listaComparacion = formula.generarListaComparacion(servicioRegistrarPeso.ObtenerRegistros(idUsuario), listaPesoIdeal);
 		
 		model.put("Lista", listaComparacion);
 		

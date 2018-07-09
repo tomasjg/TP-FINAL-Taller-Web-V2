@@ -21,7 +21,7 @@
                     	<li><a class="btn" href="registrarusuario">Registrar Paciente</a></li>  
                     	<li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
                     </c:if>
-                   		<li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                   		<li><a class="btn" href="progresoSeleccionarPaciente">Ver Progreso</a></li>
                     <c:if test="${ROL!='medico'}" >
                     	<li><a class="btn" href="verplan">Ver Plan</a></li>
                     </c:if>

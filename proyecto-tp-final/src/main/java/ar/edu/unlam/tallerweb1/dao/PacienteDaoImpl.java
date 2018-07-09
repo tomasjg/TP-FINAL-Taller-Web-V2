@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.hibernate.Session;
@@ -58,6 +60,18 @@ public class PacienteDaoImpl implements PacienteDao{
 		
 	}
 	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Paciente> obtenerListadoPacientes(){
+
+		final Session session = sessionFactory.getCurrentSession();
+		List<Paciente> resultado = (List<Paciente>) session.createCriteria(Paciente.class)
+											.list();
+		return resultado;
+		
+	}
+
+	@Override
 	public Long getIdPlanByIdPaciente(Long id) {
 		
 		final Session session = sessionFactory.getCurrentSession();

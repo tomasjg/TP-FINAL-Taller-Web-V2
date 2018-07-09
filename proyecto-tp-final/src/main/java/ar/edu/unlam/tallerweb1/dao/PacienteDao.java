@@ -1,5 +1,7 @@
 package ar.edu.unlam.tallerweb1.dao;
 
+import java.util.List;
+
 import ar.edu.unlam.tallerweb1.modelo.*;
 
 public interface PacienteDao {
@@ -12,6 +14,8 @@ public interface PacienteDao {
 	Double getPesoPaciente(Long id);
 	
 	Paciente obtenerPaciente(Long id);
+	
+	List<Paciente> obtenerListadoPacientes();
 	
 	Long getIdPlanByIdPaciente(Long id);
 }

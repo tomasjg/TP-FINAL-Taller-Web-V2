@@ -20,6 +20,8 @@ public interface ServicioPacientes {
 	void registrarPaciente(Paciente paciente);
 
 	Paciente obtenerPaciente(Long id);
+	
+	List<Paciente> obtenerListadoPacientes();
 
 	Long getIdPlanByIdPaciente(Long idPaciente);
 

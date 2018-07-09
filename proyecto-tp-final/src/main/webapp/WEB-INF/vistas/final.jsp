@@ -21,7 +21,7 @@
                     <li><a class="btn" href="home">Inicio</a></li>
                     <li><a class="btn active white" href="paciente">Elegir Plan Nutricional</a></li>
                     <li><a class="btn" href="registrarPesoDiario">Registrar Peso Diario</a></li>
-                    <li><a class="btn" href="progresoPaciente">Ver Progreso</a></li>
+                    <li><a class="btn" href="progresoSeleccionarPaciente">Ver Progreso</a></li>
                 </ul>
             </nav>
 		</header>

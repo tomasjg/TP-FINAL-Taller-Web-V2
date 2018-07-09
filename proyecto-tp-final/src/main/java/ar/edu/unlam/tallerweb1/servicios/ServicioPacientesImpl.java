@@ -54,6 +54,11 @@ public class ServicioPacientesImpl implements ServicioPacientes {
 	}
 	
 	@Override
+	public List<Paciente> obtenerListadoPacientes(){
+		return pacienteDao.obtenerListadoPacientes();
+	}
+	
+	@Override
 	public Long getIdPlanByIdPaciente(Long id){
 		return pacienteDao.getIdPlanByIdPaciente(id);
 	}
