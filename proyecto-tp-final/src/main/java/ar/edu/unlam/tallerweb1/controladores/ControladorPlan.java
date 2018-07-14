@@ -25,9 +25,6 @@ public class ControladorPlan {
 	@Inject
 	private ServicioPacientes servicioPacientes;
 	
-	@Inject
-	private ServicioPacientes ServicioPacientes;
-	
 	@RequestMapping(path = "/verplan", method = RequestMethod.GET)
 	public ModelAndView irAveplan() {
 		ModelMap model = new ModelMap();
@@ -52,7 +49,7 @@ public class ControladorPlan {
 	public ModelAndView cargarDatosRoot(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		
-		ServicioPacientes.insertarPlanesIniciales();
+		servicioPacientes.insertarPlanesIniciales();
 	
 		return new ModelAndView("home", model);
 	}
