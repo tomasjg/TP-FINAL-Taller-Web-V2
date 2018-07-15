@@ -26,9 +26,9 @@ public class UsuarioTest extends SpringTest{
     @Test @Rollback @Transactional
     public void ProbarQueSeGuardeUsuarioTest(){
        
-        Usuario usuario = new Usuario();
-        usuario.setEmail("ariel@live.com");
-        usuario.setPassword("1234");
+      //  Usuario usuario = new Usuario();
+       // usuario.setEmail("ariel@live.com");
+       // usuario.setPassword("1234");
        
         getSession().save(usuario);
        
