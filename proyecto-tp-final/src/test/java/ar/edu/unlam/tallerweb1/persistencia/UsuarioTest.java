@@ -43,7 +43,7 @@ public class UsuarioTest extends SpringTest{
         
         Usuario prueba = new Usuario();
         
-        Usuario resultado=dao.consultarUsuario(prueba);
+        Usuario resultado=dao.consultarUsuario(usuario);
        
         assertThat(resultado).isNotNull();     
     }
