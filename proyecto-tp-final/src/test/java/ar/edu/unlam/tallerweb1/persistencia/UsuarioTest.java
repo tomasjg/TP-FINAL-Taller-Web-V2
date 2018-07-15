@@ -26,9 +26,9 @@ public class UsuarioTest extends SpringTest{
     @Test @Rollback @Transactional
     public void ProbarQueSeGuardeUsuarioTest(){
        
-      //  Usuario usuario = new Usuario();
-       // usuario.setEmail("ariel@live.com");
-       // usuario.setPassword("1234");
+       Usuario usuario = new Usuario();
+       usuario.setEmail("ariel@live.com");
+       usuario.setPassword("1234");
        
         getSession().save(usuario);
        
@@ -41,7 +41,9 @@ public class UsuarioTest extends SpringTest{
         System.out.println("INICIA FORMULA******************************************");
         formula.generarListaPesoIdeal("10/10/1987", 60, 80, (double) 500);*/
         
-        Usuario resultado=dao.consultarUsuario(usuario);
+        Usuario prueba = new Usuario();
+        
+        Usuario resultado=dao.consultarUsuario(prueba);
        
         assertThat(resultado).isNotNull();     
     }
