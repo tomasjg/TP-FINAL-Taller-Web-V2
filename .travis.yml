@@ -3,7 +3,7 @@ language: java
 services:
   - mysql
   
-before_install:
+before_script:
   - mysql -e 'CREATE DATABASE db;'
 
 notifications:
