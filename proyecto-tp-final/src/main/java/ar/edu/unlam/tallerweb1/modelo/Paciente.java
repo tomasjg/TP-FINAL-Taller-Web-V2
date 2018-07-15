@@ -25,9 +25,17 @@ public class Paciente {
 	private int edad;
 	private int ejercicio;
 	private String fecha_inicio;
-	
+	private Long medicoAsociado_id;
 	private Long planAsociado_id;
 		
+	public Long getMedicoAsociado_id() {
+		return medicoAsociado_id;
+	}
+
+	public void setMedicoAsociado_id(Long medicoAsociado_id) {
+		this.medicoAsociado_id = medicoAsociado_id;
+	}
+
 	public Paciente() {
 	}
 	

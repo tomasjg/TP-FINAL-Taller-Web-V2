@@ -29,6 +29,13 @@
 				
 			<form:form action="completarRegistroPesoDiario" method="POST" modelAttribute="registrarPesoDiarioDTO">
 				
+				<form:select path="idPaciente">
+				
+				<c:forEach items="${listaPacientes}" var = "i">
+				<form:option value="${i.id}">${i.nombre}</form:option>
+				</c:forEach>]
+					
+				</form:select>
 				<br>
 				<form:label path="peso">Peso</form:label>
 				<form:input path="peso" id="peso" type="number" class="form-control" required="required" placeholder="Exprese su peso en kilogramos" /> 

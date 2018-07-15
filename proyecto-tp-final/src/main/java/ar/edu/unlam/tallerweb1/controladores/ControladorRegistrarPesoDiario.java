@@ -25,11 +25,11 @@ public class ControladorRegistrarPesoDiario {
 	private ServicioRegistrarPesoDiario servicioRegistrarPesoDiario;
 
 	@RequestMapping(path = "/registrarPesoDiario", method = RequestMethod.GET)
-	public ModelAndView irARegistroPesoDiario() {
+	public ModelAndView irARegistroPesoDiario(HttpServletRequest request) {
 		ModelMap model = new ModelMap();
 		RegistrarPesoDiarioDTO registrarPesoDiarioDTO = new RegistrarPesoDiarioDTO();
 		model.put("registrarPesoDiarioDTO",registrarPesoDiarioDTO);
-		
+		model.put("listaPacientes",servicioRegistrarPesoDiario.ObtenerPacientes((Long) request.getSession().getAttribute("ID")));
 		return new ModelAndView("registrarPesoDiario", model);
 	}
 	
@@ -40,8 +40,7 @@ public class ControladorRegistrarPesoDiario {
 		//tomo la fecha actual junto con el id del usuario y busco si ya existe un registro
 		//cambiar el dummy id por el id del user en session
 		
-		Long longId = (Long) request.getSession().getAttribute("idUsuario");
-		int id = longId.intValue();
+		int id = registrarPesoDiarioDTO.getIdPaciente().intValue();
 		
 		registrarPesoDiarioDTO.setPeso((float)registrarPesoDiarioDTO.getPeso());
 		
@@ -55,13 +54,13 @@ public class ControladorRegistrarPesoDiario {
 			// si ya existe registro ese dia se le avisa que no puede ingresarlo nuevamente
 
 			model.put("error", "Ya existe un registro en la fecha actual, vuelva mañana para ingresar un nuevo registro.");
-			return new ModelAndView("registrarPesoDiario", model);
+			return new ModelAndView("/registrarPesoDiario", model);
 		}
 		else {
 			// si no existe registro en esta fecha procedemos a guardarlo en la base de datos
 
 			registrarPesoDiarioDTO.setFecha(f);
-			registrarPesoDiarioDTO.setIdPaciente(longId);
+
 			servicioRegistrarPesoDiario.RegistrarPesoDiario(registrarPesoDiarioDTO);
 			return new ModelAndView("completarRegistroPesoDiario", model);
 		}

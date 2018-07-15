@@ -50,7 +50,7 @@ public class ControladorLogin {
 		if (usuarioBuscado != null) {
 			request.getSession().setAttribute("ROL", usuarioBuscado.getRol());
 			
-			if(usuarioBuscado.getRol().equals("paciente") ){
+			if(usuarioBuscado.getRol().equals("paciente")){
 				request.getSession().setAttribute("idUsuario", usuarioBuscado.getId() );
 				request.getSession().setAttribute("APELLIDO_PACIENTE", usuario.getApellido() );
 				request.getSession().setAttribute("NOMBRE_PACIENTE", usuario.getNombre() );

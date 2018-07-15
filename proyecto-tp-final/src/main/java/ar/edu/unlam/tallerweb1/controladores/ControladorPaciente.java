@@ -166,8 +166,8 @@ public class ControladorPaciente {
 		paciente.setFecha_inicio(f);		
 		paciente.setPlanAsociado_id(pacienteDTO.getPlan().getId());
 		
-		//SE CAMBIO ID por idUsuario
-		paciente.setIdUsuario((Long) request.getSession().getAttribute("idUsuario"));
+		//agregamos el id del medico asociado a este paciente
+		paciente.setMedicoAsociado_id((Long) request.getSession().getAttribute("ID"));
 		
 		//seteamos el nombre del paciente
 		String nombrePaciente= (String) request.getSession().getAttribute("NOMBRE_PACIENTE");
@@ -175,7 +175,7 @@ public class ControladorPaciente {
 		paciente.setNombre(nombrePaciente);
 		
 		// Llama al servicio que inserta el paciente en la BD
-		ServicioPacientes.registrarPaciente(pacienteDTO.getPaciente());
+		ServicioPacientes.registrarPaciente(paciente);
 		
 		
 		return new ModelAndView("/home", model);

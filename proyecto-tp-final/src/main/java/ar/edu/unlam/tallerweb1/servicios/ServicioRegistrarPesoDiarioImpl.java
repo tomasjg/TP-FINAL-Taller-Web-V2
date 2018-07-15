@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import ar.edu.unlam.tallerweb1.dao.RegistrarPesoDiarioDao;
+import ar.edu.unlam.tallerweb1.modelo.Paciente;
 import ar.edu.unlam.tallerweb1.modelo.RegistrarPesoDiarioDTO;
 
 
@@ -30,5 +31,10 @@ public class ServicioRegistrarPesoDiarioImpl implements ServicioRegistrarPesoDia
 	@Override
 	public List<RegistrarPesoDiarioDTO> ObtenerRegistros(Long id) {
 		return registrarPesoDiarioDao.ObtenerRegistros(id);
+	}
+	
+	@Override
+	public List<Paciente> ObtenerPacientes(Long id) {
+		return registrarPesoDiarioDao.ObtenerPacientes(id);
 	}
 }
