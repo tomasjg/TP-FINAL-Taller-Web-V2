@@ -1,4 +1,4 @@
 language: java
 script: 
   - cd proyecto-tp-final
-  - mvn clean install -U
+  - mvn clean install -DskipTests
