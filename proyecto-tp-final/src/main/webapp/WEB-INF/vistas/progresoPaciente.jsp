@@ -9,6 +9,7 @@
 	    <!-- Bootstrap theme -->
 	    <link href="css/bootstrap-theme.min.css" rel="stylesheet">
 	    <link rel="stylesheet" href="css/estilos.css">
+	    <script src="<c:url value="js/Chart.min.js" />"></script>
 	</head>
 	<body>
 	
@@ -50,6 +51,48 @@
 		       	  </c:if>	
 			    </tr>
 			  </c:forEach> 
+
+			  <div id="grafico"  class="mainbox col-md-8 col-sm-1 col-sm-offset-2">	
+				<!--  <div class="mainbox">-->
+				<br>
+					<h2 class="center">Tiempo estimado en cumplir objetivo</h2>
+					<c:set var="pesoPGPorMes" value="${(caloriasPGPorDia*4)/1000}" />
+					<c:set var="contador" value="${peso}" />  
+					<div class="chartjs-wrapper">
+							<canvas id="chartjs-0" class="chartjs" width="undefined" height="undefined"></canvas>
+							<script>
+							new Chart	(document.getElementById("chartjs-0"),
+											{"type":"line","data":
+												{"labels":["",	<c:forEach items="${Lista}" var = "i">
+				        					 					"${i.fecha}",
+						      									</c:forEach>],
+						      					"datasets":
+													[{"label":"Peso Ideal","data":
+														[
+															${pesoInicial},
+															<c:forEach items="${Lista}" var = "j">	        	 
+															${j.pesoIdeal}, 			
+															</c:forEach>
+														],"fill":
+									false,"borderColor":"rgb(192, 75, 192)","lineTension":
+										0.1}
+								
+								,{"label":"Peso Registrado","data":[
+																	${pesoInicial},
+																	<c:forEach items="${Lista}" var = "j">	        	 
+																	${j.pesoRegistrado}, 			
+																	</c:forEach>
+																	],"fill":
+									false,"borderColor":"rgb(75, 192, 192)","lineTension":
+										0.1}
+													]		
+												},"options":{}
+											}
+										); 
+							</script>
+					</div>
+				</div>
+
 			  </tbody>
 		</table>
 			

@@ -22,6 +22,7 @@ import ar.edu.unlam.tallerweb1.modelo.ProgresoPesoIdeal;
 import ar.edu.unlam.tallerweb1.modelo.RegistrarPesoDiarioDTO;
 import ar.edu.unlam.tallerweb1.modelo.Usuario;
 import ar.edu.unlam.tallerweb1.servicios.ServicioPacientes;
+import ar.edu.unlam.tallerweb1.servicios.ServicioPlan;
 import ar.edu.unlam.tallerweb1.servicios.ServicioRegistrarPesoDiario;
 
 
@@ -33,10 +34,22 @@ public class ControladorProgresoPaciente {
 	private ServicioPacientes servicioPacientes;
 	
 	@Inject
-	private ServicioPacientes servicioPlan;
+	private ServicioPlan servicioPlan;
 	
 	@Inject
 	private ServicioRegistrarPesoDiario servicioRegistrarPeso;
+	
+	public void setServicioPlan(ServicioPlan servicioPlan) {
+		this.servicioPlan = servicioPlan;
+	}
+	
+	public void setServicioPacientes(ServicioPacientes servicioPacientes) {
+		this.servicioPacientes = servicioPacientes;
+	}
+	
+	public void setServicioRegistrarPesoDiario(ServicioRegistrarPesoDiario servicioRegistrarPesoDiario) {
+		this.servicioRegistrarPeso = servicioRegistrarPesoDiario;
+	}
 	
 	@RequestMapping(path = "/progresoSeleccionarPaciente", method = RequestMethod.GET)
 	public ModelAndView verProgresoSeleccionarPaciente(HttpServletRequest request) {
@@ -76,9 +89,11 @@ public class ControladorProgresoPaciente {
 		}
 		
 		Plan plan = servicioPlan.consultarPlan(paciente.getPlanAsociado_id());
+		System.out.println("***************PRIMER BANDERA");
 		Formula formula = new Formula();
 		
 		Double pesoIdeal = formula.calcularPesoIdeal(paciente.getAltura(), paciente.getSexo());
+		
 		Double tmb = formula.calcularTMB(paciente.getPeso(), paciente.getAltura(), paciente.getEdad(), paciente.getSexo(), paciente.getEjercicio());
 		
 		double pesoAPerderOGanar;
@@ -97,11 +112,12 @@ public class ControladorProgresoPaciente {
 		int diasObjetivo = (int)(((pesoAPerderOGanar * 1000) * 7) / caloriasPGPorDia);
 		
 		List<ProgresoPesoIdeal> listaPesoIdeal = formula.generarListaPesoIdeal(paciente.getFecha_inicio(), diasObjetivo, paciente.getPeso(), caloriasPGPorDia);
-
+		System.out.println("***************SEGUNDA BANDERA");
 		List<CompararProgresoDTO> listaComparacion = formula.generarListaComparacion(servicioRegistrarPeso.ObtenerRegistros(idUsuario), listaPesoIdeal);
 		
 		model.put("Lista", listaComparacion);
-		
+		model.put("pesoInicial", paciente.getPeso());
+		System.out.println("***************ULTIMA BANDERA");
 		return new ModelAndView("progresoPaciente", model);
 	}
 }
