@@ -1,4 +1,8 @@
 language: java
+
+notifications:
+  email: false
+
 script: 
   - cd proyecto-tp-final
   - mvn test -B
